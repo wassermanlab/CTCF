@@ -39,8 +39,7 @@ ls ../DiscordantDomains/ | cut -d "." -f 1 | sort | uniq | perl -e \
                 or die "Could not open file \"$bed_file\": $!";
             while ($region = <$fh>) {
                 chomp $region;
-                ($c, $s, $e) = split(/\t/, $region);
-                system "python ./predict.py --region $c $s+1 $e --genome $genome --model $model --weights $weights -o $genome";
+                system "python ./predict.py --region $region --genome $genome --model $model --weights $weights -o $genome";
             }
             close($fh);
         } 
