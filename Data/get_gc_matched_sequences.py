@@ -7,9 +7,9 @@ import numpy as np
 from Bio import SeqIO
 from Bio.SeqUtils import GC
 
-parser = argparse.ArgumentParser(description='Sample GC comparable sequences for the TF (pos/neg sets)')
+parser = argparse.ArgumentParser(description="Sample GC comparable sequences for the TF (pos/neg sets)")
 parser.add_argument("--matrix", default= None, help="Path to the matrix with regions-TFs")
-parser.add_argument("--seqfile", default=None, help="File with fasta sequences")
+parser.add_argument("--seq-file", default=None, help="File with FASTA sequences")
 parser.add_argument("--regions-idx", default=None, help="Idx file with regions")
 parser.add_argument("--tfs-idx", default=None, help="Idx file with TFs")
 parser.add_argument("--tf", default="CTCF", help="TF for which we need sample sequences")
@@ -18,14 +18,14 @@ parser.add_argument("--out-dir", default=".", help="Directory where to output sa
 args = parser.parse_args()
 
 matrix = args.matrix
-seqfile = args.seqfile
+seq_file = args.seq_file
 regions_idx = args.regions_idx
 tfs_idx = args.tfs_idx
 tf = args.tf
 out_dir = args.out_dir
 
 ##########################################################
-#load the data set
+# Load the data set
 ##########################################################
 #load the matrix
 data = np.load(matrix)
@@ -51,7 +51,7 @@ print("Data is loaded!")
 ##########################################################
 
 ##########################################################
-#extracting the fasta sequences for 0s and 1s
+# Extracting the fasta sequences for 0s and 1s
 ##########################################################
 #none zero peaks
 nonzero = tf_regions[tf_regions == 1].index
@@ -61,7 +61,7 @@ zero = tf_regions[tf_regions == 0].index
 fasta_ids_nonzero = {}
 fasta_ids_zero = {}
 
-fasta_sequences = SeqIO.parse(open(seqfile),'fasta')
+fasta_sequences = SeqIO.parse(open(seq_file), "fasta")
 
 tf_sequences = {}
 for fasta in fasta_sequences:
@@ -80,10 +80,11 @@ for fasta in fasta_sequences:
 
 fasta_ids_nonzero = pd.Series(fasta_ids_nonzero)
 fasta_ids_zero = pd.Series(fasta_ids_zero)
+print("Sequences are extracted!")
 ##########################################################
 
 ##########################################################
-#sample new 0s
+# Sample new 0s
 ##########################################################
 nonzero_gc = fasta_ids_nonzero.apply(lambda x: GC(x.upper()))
 zero_gc = fasta_ids_zero.apply(lambda x: GC(x.upper()))
@@ -122,7 +123,7 @@ print("Sequences are sampled!")
 ##########################################################
 
 ##########################################################
-#saving files
+# Saving files
 ##########################################################
 fasta_file = os.path.join(out_dir, "neg_seqs.fa")
 with open(fasta_file, "w") as f:
@@ -139,3 +140,4 @@ with open(fasta_file, "w") as f:
         f.write(sequence + "\n")
 
 print("Files are saved! You are good to go!")
+##########################################################
