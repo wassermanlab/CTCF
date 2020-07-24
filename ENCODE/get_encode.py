@@ -256,7 +256,6 @@ def _parse_ENCODE_metadata(genome, metadata_file):
             # Fixes
             if genome == "mm9" or genome == "mm10":
                 genome_assembly_idx = line.index("File assembly")
-                status_idx -= 1
             else:
                 genome_assembly_idx = line.index("Assembly")
 
