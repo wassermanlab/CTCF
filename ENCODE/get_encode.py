@@ -140,7 +140,6 @@ def encode(genome, feat_type, out_dir=".", threads=1):
     # the best type of file), then group ENCODE accessions by experiment target
     # and type
     grouped_accessions = _group_ENCODE_accessions(_filter_ENCODE_accessions(feat_type))
-    print(grouped_accessions)
 
     # For each experiment target/type...
     for experiment_target, experiment_type in sorted(grouped_accessions):
@@ -205,7 +204,7 @@ def _parse_ENCODE_metadata(genome, metadata_file):
             biosample_type = line[biosample_type_idx]
             download_url = line[download_idx]
             experiment_accession = line[experiment_acc_idx]
-            m = re.search("^(\w+)", line[experiment_type_idx])
+            m = re.search("^(\S+)", line[experiment_type_idx])
             experiment_type = m.group(1)
             experiment_target = line[experiment_target_idx]
             if type(experiment_target) is float and isnan(experiment_target):
