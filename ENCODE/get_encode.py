@@ -205,7 +205,8 @@ def _parse_ENCODE_metadata(genome, metadata_file):
             biosample_type = line[biosample_type_idx]
             download_url = line[download_idx]
             experiment_accession = line[experiment_acc_idx]
-            experiment_type = line[experiment_type_idx]
+            m = re.search("^(\w+)", line[experiment_type_idx])
+            experiment_type = m.group(1)
             experiment_target = line[experiment_target_idx]
             if type(experiment_target) is float and isnan(experiment_target):
                 experiment_target = None
