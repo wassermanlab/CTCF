@@ -2,6 +2,7 @@
 
 # Train a CTCF model with DragoNN
 # https://github.com/kundajelab/dragonn
+<<<<<<< HEAD
 dragonn train --pos-sequences ../sequences/pos_seqs.fa --neg-sequences ../sequences/neg_seqs.fa --prefix CTCF
 # Finished training after 18 epochs.
 # final validation metrics:
@@ -17,3 +18,8 @@ dragonn train --pos-sequences ../sequences/pos_seqs.rev.fa --neg-sequences ../se
 # final validation metrics:
 # Loss: 0.1575	Balanced Accuracy: 95.03%	 auROC: 0.980	 auPRC: 0.984	 auPRG: 0.975
 # 	Recall at 5%|10%|20% FDR: 95.4%|97.1%|97.9%	 Num Positives: 11494	 Num Negatives: 11355
+=======
+dragonn train --pos-sequences ../Data/pos_seqs.fa --neg-sequences ../Data/neg_seqs.fa --prefix CTCF
+dragonn train --pos-sequences ../Data/pos_seqs.fwd.fa --neg-sequences ../Data/neg_seqs.fwd.fa --prefix CTCF-fwd
+dragonn train --pos-sequences ../Data/pos_seqs.rev.fa --neg-sequences ../Data/neg_seqs.rev.fa --prefix CTCF-rev
+>>>>>>> 0333f30b9be0654ce81b376c567eb38d5bee9507
