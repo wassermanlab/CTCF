@@ -14,3 +14,4 @@ if [ ! -f ./ChIP-seq.CTCF.200bp.bed ]; then
     cut -f 1,2,4,6 ./ChIP-seq.CTCF.bed | awk '{print($1"\t"$2+$4-100"\t"$2+$4+100"\t"$3);}' | \
     LC_ALL=C sort --parallel=8 -T ./ -k1,1 -k2,2n > ./ChIP-seq.CTCF.200bp.bed
 fi
+
