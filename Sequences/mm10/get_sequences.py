@@ -96,8 +96,6 @@ def build_matrix(encode_dir, fasta_file, out_dir="."):
     encodes_tfs = ParseUtils.load_pickle(os.path.join(encode_dir, pkl_file))
     samples_tfs = set([e.biosample_name for e in encodes_tfs.values()])
     samples = samples_acc.intersection(samples_tfs)
-    print(samples)
-    exit(0)
 
     #######################################################
     # Now, for each sample, create a high-quality set of  #
