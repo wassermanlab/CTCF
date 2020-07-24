@@ -140,6 +140,7 @@ def encode(genome, feat_type, out_dir=".", threads=1):
     # the best type of file), then group ENCODE accessions by experiment target
     # and type
     grouped_accessions = _group_ENCODE_accessions(_filter_ENCODE_accessions(feat_type))
+    print(grouped_accessions)
 
     # For each experiment target/type...
     for experiment_target, experiment_type in sorted(grouped_accessions):

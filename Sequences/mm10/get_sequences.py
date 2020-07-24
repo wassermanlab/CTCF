@@ -7,8 +7,7 @@ from pybedtools import BedTool
 from __init__ import ENCODE, ParseUtils
 
 usage_msg = """
-usage: %s --dhs-dir DIR --fasta-file FILE --encode-dir DIR
-          --remap-dir DIR --unibind-dir DIR [-h] [options]
+usage: %s --encode-dir DIR --fasta-file FILE [-h] [options]
 """ % os.path.basename(__file__)
 
 help_msg = """%s
