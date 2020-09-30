@@ -142,4 +142,6 @@ for strand in ["fwd", "rev"]:
     print("Files are saved!")
     ######################################################
 
+    break
+
 print("You are good to go!")
