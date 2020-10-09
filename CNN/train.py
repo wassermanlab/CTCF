@@ -4,10 +4,12 @@ import torch
 from torch.utils.data import DataLoader
 import torch.nn as nn
 
-conv_kernel_size = 8
-pool_kernel_size = 4
+# CUDA for PyTorch
+use_cuda = torch.cuda.is_available()
+device = torch.device("cuda:0" if use_cuda else "cpu")
+torch.backends.cudnn.benchmark = True
 
-from selene import Trainer, initialize_model
+from models.danq import DanQ, get_criterion, get_optimizer
 from utils.io import write
 from utils.data import build_dataset, split_data
 
@@ -120,7 +122,7 @@ def train(
         write(None, "*** Initializing model...")
 
     # Initialize model
-    model, criterion, optimizer = initialize_model(
+    model, criterion, optimizer = __initialize_model(
         architecture, sequence_length, learn_rate
     )
 
@@ -128,12 +130,27 @@ def train(
         write(None, "*** Training/Validating model...")
 
     # Train/validate model
-    trainer = Trainer(
-        model, criterion, optimizer, dict([(0, name)]), generators,
-        cpu_n_threads=threads, output_dir=out_dir, verbose=verbose
-    )
-    trainer.train_and_validate()
-    exit(0)
+    for epoch in range(10):
+
+        model.train() #tell model explicitly that we train
+        running_loss = 0.0
+        for seqs, labels in generators["train"]:
+            x = seqs.to(device, dtype=torch.float) #the input here is (batch_size, 4, 200)
+            labels = labels.to(device, dtype=torch.float)
+            #zero the existing gradients so they don't add up
+            optimizer.zero_grad()
+            # Forward pass
+            outputs = model(x.transpose(1, 2))
+            loss = criterion(outputs, labels) 
+            # Backward and optimize
+            loss.backward()
+            optimizer.step()
+            running_loss += loss.item()
+        #save training loss 
+        # return(running_loss / len(self.generators["train"]))
+        print(running_loss / len(self.generators["train"]))
+
+
 
     # model : torch.nn.Module
     #     The model to train.
@@ -160,26 +177,39 @@ def train(
     # if verbose:
     #     write(None, "*** Initializing PyTorch...")
 
-    # # CUDA for PyTorch
-    # use_cuda = torch.cuda.is_available()
-    # device = torch.device("cuda:0" if use_cuda else "cpu")
-    # torch.backends.cudnn.benchmark = True
-
     # # Set manual seed for reproducibility
     # torch.manual_seed(seed)
 
 
+def __initialize_model(architecture, sequence_length, lr=0.001):
+    """
+    Adapted from:
+    https://selene.flatironinstitute.org/utils.html#initialize-model
 
-    # train
-    print("starting model training...")
-    model.train(X_train, y_train, validation_data=(X_valid, y_valid))
-    valid_result = model.test(X_valid, y_valid)
-    print("final validation metrics:")
-    print(valid_result)
-    # save
-    print("saving model files..")
-    model.save(prefix)
-    print("Done!")
+    Initialize model (and associated criterion, optimizer)
+
+    Parameters
+    ----------
+    architecture : str
+        Available model architectures: `danq`, `deeperdeepsea`, `deepsea` and
+        `heartenn`.
+    sequence_length : int
+        Model-specific configuration
+    lr : float
+        Learning rate.
+
+    Returns
+    -------
+    tuple(torch.nn.Module, torch.nn._Loss, torch.optim)
+        * `torch.nn.Module` - the model architecture
+        * `torch.nn._Loss` - the loss function associated with the model
+        * `torch.optim` - the optimizer associated with the model
+    """
+    model = DanQ(sequence_length, 1)
+    criterion = get_criterion()
+    optimizer = get_optimizer(model.parameters(), lr)
+
+    return(model, criterion, optimizer)
 
 if __name__ == "__main__":
     train()

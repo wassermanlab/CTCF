@@ -247,12 +247,22 @@ class Trainer(object):
             self.model.train() #tell model explicitly that we train
             running_loss = 0.0
             for seqs, labels in self.generators["train"]:
+                print(seqs[0][:5])
+                print(seqs.transpose(1, 2)[0])
+                exit(0)
+                print(labels)
+
                 x = seqs.to(self.device, dtype=torch.float) #the input here is (batch_size, 4, 200)
                 labels = labels.to(self.device, dtype=torch.float)
                 #zero the existing gradients so they don't add up
                 self.optimizer.zero_grad()
                 # Forward pass
                 outputs = self.model(x.transpose(1, 2))
+                print(outputs)
+                print(seqs.shape, seqs.transpose(1, 2).shape)
+                print(labels.shape)
+                print(outputs.shape)
+                exit(0)
                 loss = self.criterion(outputs, labels) 
                 # Backward and optimize
                 loss.backward()
@@ -349,6 +359,9 @@ class Trainer(object):
         self.model.train() #tell model explicitly that we train
         running_loss = 0.0
         for seqs, labels in self.generators["train"]:
+            print(seqs)
+            print(labels)
+            exit(0)
             x = seqs.to(self.device, dtype=torch.float) #the input here is (batch_size, 4, 200)
             labels = labels.to(self.device, dtype=torch.float)
             #zero the existing gradients so they don't add up
