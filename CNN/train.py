@@ -4,11 +4,6 @@ import torch
 from torch.utils.data import DataLoader
 import torch.nn as nn
 
-# CUDA for PyTorch
-use_cuda = torch.cuda.is_available()
-device = torch.device("cuda:0" if use_cuda else "cpu")
-torch.backends.cudnn.benchmark = True
-
 from models.danq import DanQ, get_criterion, get_optimizer
 from utils.io import write
 from utils.data import build_dataset, split_data
@@ -98,7 +93,6 @@ def train(
     # Splits
     data, labels, splits = split_data(pos_sequences, neg_sequences, seed)
     total_sequences, sequence_length, one_hot_encoding_size = data.shape
-    print("data shape", data.shape)
 
     # Datasets
     datasets = {
@@ -115,9 +109,6 @@ def train(
         "test": DataLoader(datasets["test"], **parameters)
     }
 
-    inputs, targets = next(iter(generators["train"]))
-    print("input shape", inputs.shape)
-
     if verbose:
         write(None, "*** Initializing model...")
 
@@ -128,6 +119,14 @@ def train(
 
     if verbose:
         write(None, "*** Training/Validating model...")
+
+    # Use CUDA
+    if torch.cuda.is_available():
+        device = torch.device("cuda:0")
+        model.cuda()
+        criterion.cuda()
+    else:
+        device = torch.device("cpu")
 
     # Train/validate model
     for epoch in range(10):
@@ -148,7 +147,7 @@ def train(
             running_loss += loss.item()
         #save training loss 
         # return(running_loss / len(self.generators["train"]))
-        print(running_loss / len(self.generators["train"]))
+        print(running_loss / len(generators["train"]))
 
 def __initialize_model(architecture, sequence_length, lr=0.001):
     """
