@@ -96,7 +96,7 @@ def train(
     # Splits
     data, labels, splits = split_data(pos_sequences, neg_sequences, seed)
     total_sequences, sequence_length, one_hot_encoding_size = data.shape
-    print(data.shape)
+    print("data shape", data.shape)
 
     # Datasets
     datasets = {
@@ -114,13 +114,13 @@ def train(
     }
 
     inputs, targets = next(iter(generators["train"]))
-    print(inputs.shape)
+    print("input shape", inputs.shape)
 
     if verbose:
         write(None, "*** Initializing model...")
 
     # Initialize model
-    model, loss_criterion, opt_class, opt_kwargs = initialize_model(
+    model, criterion, optimizer = initialize_model(
         architecture, sequence_length, learn_rate
     )
 
@@ -129,39 +129,24 @@ def train(
 
     # Train/validate model
     trainer = Trainer(
-        dict([(0, name)]), generators, loss_criterion, model, opt_class,
-        opt_kwargs, cpu_n_threads=threads, output_dir=out_dir, verbose=verbose
+        model, criterion, optimizer, dict([(0, name)]), generators,
+        cpu_n_threads=threads, output_dir=out_dir, verbose=verbose
     )
     trainer.train_and_validate()
-
-        # model,
-        # generators,
-        # loss_criterion,
-        # optimizer_class,
-        # optimizer_kwargs,
-        # max_steps,
-        # report_stats_every_n_steps,
-        # output_dir,
-        # save_checkpoint_every_n_steps=1000,
-        # save_new_checkpoints_after_n_steps=None,
-        # report_gt_feature_n_positives=10,
-        # n_validation_samples=None,
-        # n_test_samples=None,
-        # cpu_n_threads=1,
-        # use_cuda=False,
-        # logging_verbosity=2,
-        # checkpoint_resume=None,
-        # metrics={
-        #     "roc_auc": roc_auc_score,
-        #     "average_precision": average_precision_score,
-        #     "m_corr_coef": matthews_corrcoef
-        # }
-
-    # Train model
-    # generator = generators["train"].__dict__
-    # print(generator["batch_size"])
-
     exit(0)
+
+    # model : torch.nn.Module
+    #     The model to train.
+    # criterion : torch.nn._Loss
+    #     The loss function to optimize.
+    # optimizer : torch.optim.Optimizer
+    #     The optimizer to minimize loss with.
+    # feature_index : dict
+    #     A dictionary that maps feature indices (`int`) to names (`int`).
+    # generators : dict
+    #     A dictionary that maps the `train`, `validation` and `test` steps
+    #     to `torch.utils.data.DataLoader` instances.
+
 
     if verbose:
         write(None, "*** Initializing model...")

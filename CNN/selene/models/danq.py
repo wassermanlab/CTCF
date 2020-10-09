@@ -63,10 +63,10 @@ class DanQ(nn.Module):
         out = out.transpose(0, 1)
         reshape_out = out.contiguous().view(
             out.size(0), 640 * self._n_channels)
-        predict = self.classifier(reshape_out)
-        return(predict)
 
-def get_loss_criterion():
+        return(self.classifier(reshape_out))
+
+def get_criterion():
     """
     Specify the appropriate loss function (criterion) for this model.
 
@@ -74,7 +74,10 @@ def get_loss_criterion():
     -------
     torch.nn._Loss
     """
-    return(nn.BCELoss())
+    # return(nn.BCELoss())
+    return(nn.BCEWithLogitsLoss())
 
-def get_optimizer(lr=0.003):
-    return(torch.optim.RMSprop, {"lr": lr})
+# def get_optimizer(lr=0.001):
+def get_optimizer(params, lr=0.001):
+    # return(torch.optim.RMSprop, {"lr": lr})
+    return(torch.optim.Adam(params, lr=lr))

@@ -46,20 +46,17 @@ class Trainer(object):
 
     Parameters
     ----------
+    model : torch.nn.Module
+        The model to train.
+    criterion : torch.nn._Loss
+        The loss function to optimize.
+    optimizer : torch.optim.Optimizer
+        The optimizer to minimize loss with.
     feature_index : dict
         A dictionary that maps feature indices (`int`) to names (`int`).
     generators : dict
         A dictionary that maps the `train`, `validation` and `test` steps
         to `torch.utils.data.DataLoader` instances.
-    loss_criterion : torch.nn._Loss
-        The loss function to optimize.
-    model : torch.nn.Module
-        The model to train.
-    optimizer_class : torch.optim.Optimizer
-        The optimizer to minimize loss with.
-    optimizer_kwargs : dict
-        The dictionary of keyword arguments to pass to the optimizer's
-        constructor.
     cpu_n_threads : int, optional
         Default is 1. Sets the number of OpenMP threads used for CPU
         operations.
@@ -114,12 +111,11 @@ class Trainer(object):
 
     def __init__(
         self,
+        model,
+        criterion,
+        optimizer,
         feature_index,
         generators,
-        loss_criterion,
-        model,
-        optimizer_class,
-        optimizer_kwargs,
         cpu_n_threads=1,
         max_steps=10000,
         metrics=default_metrics,
@@ -133,12 +129,10 @@ class Trainer(object):
         """
         torch.set_num_threads(cpu_n_threads)
 
-        self.generators = generators
-        self.criterion = loss_criterion
         self.model = model
-        self.optimizer = optimizer_class(
-            self.model.parameters(), **optimizer_kwargs
-        )
+        self.criterion = criterion
+        self.optimizer = optimizer
+        self.generators = generators
 
         # Optional
         self.max_steps = max_steps
@@ -315,23 +309,23 @@ class Trainer(object):
         float
             The average loss.
         """
-        self.model.train()
-        acc_loss = []
+        # self.model.train()
+        # acc_loss = []
 
-        for inputs, targets in self.generators["train"]:
-            inputs = inputs.to(device=self.device, dtype=torch.float)
-            targets = targets.to(device=self.device, dtype=torch.float)
-            self.optimizer.zero_grad()
-            predictions = self.model(inputs.transpose(1, 2))
-            loss = self.criterion(predictions, targets)
-            loss.backward()
-            self.optimizer.step()
-            batch_losses.append()
+        # for inputs, targets in self.generators["train"]:
+        #     inputs = inputs.to(device=self.device, dtype=torch.float)
+        #     targets = targets.to(device=self.device, dtype=torch.float)
+        #     self.optimizer.zero_grad()
+        #     predictions = self.model(inputs.transpose(1, 2))
+        #     loss = self.criterion(predictions, targets)
+        #     loss.backward()
+        #     self.optimizer.step()
+        #     batch_losses.append()
 
-        print(batch_losses)
-        exit(0)
+        # print(batch_losses)
+        # exit(0)
 
-        return(sum(batch_losses) / len(self.generators["train"]))
+        # return(sum(batch_losses) / len(self.generators["train"]))
 
         self.model.train() #tell model explicitly that we train
         running_loss = 0.0
@@ -479,7 +473,7 @@ class Trainer(object):
             best_file = os.path.join(self.output_dir, "best_model.pth.tar")
             shutil.copyfile(file_name, best_file)
 
-def initialize_model(architecture, sequence_length, learn_rate=0.003):
+def initialize_model(architecture, sequence_length, lr=0.001):
     """
     Adapted from:
     https://selene.flatironinstitute.org/utils.html#initialize-model
@@ -493,21 +487,20 @@ def initialize_model(architecture, sequence_length, learn_rate=0.003):
         `heartenn`.
     sequence_length : int
         Model-specific configuration
-    learn_rate : float
+    lr : float
         Learning rate.
 
     Returns
     -------
-    tuple(torch.nn.Module, torch.nn._Loss, torch.optim, dict)
+    tuple(torch.nn.Module, torch.nn._Loss, torch.optim)
         * `torch.nn.Module` - the model architecture
         * `torch.nn._Loss` - the loss function associated with the model
         * `torch.optim` - the optimizer associated with the model
-        * `dict` - the optimizer arguments
     """
 
     if architecture == "danq":
         from .models.danq import (
-            DanQ as model_class, get_loss_criterion, get_optimizer
+            DanQ as model_class, get_criterion, get_optimizer
         )
     # if architecture == "deeperdeepsea":
     #     from .models.deeperdeepsea import (
@@ -523,29 +516,29 @@ def initialize_model(architecture, sequence_length, learn_rate=0.003):
     #     )
 
     model = model_class(sequence_length, 1)
-    __is_lua_trained_model(model)
-    loss_criterion = get_loss_criterion()
-    optimizer_class, optimizer_kwargs = get_optimizer(learn_rate)
+    # __is_lua_trained_model(model)
+    criterion = get_criterion()
+    optimizer = get_optimizer(model.parameters(), lr)
 
-    return(model, loss_criterion, optimizer_class, optimizer_kwargs)
+    return(model, criterion, optimizer)
 
-def __is_lua_trained_model(model):
+# def __is_lua_trained_model(model):
 
-    if hasattr(model, "from_lua"):
-        return(model.from_lua)
+#     if hasattr(model, "from_lua"):
+#         return(model.from_lua)
 
-    from .utils.multi_model_wrapper import MultiModelWrapper
+#     from .utils.multi_model_wrapper import MultiModelWrapper
 
-    check_model = model
-    if hasattr(model, "model"):
-        check_model = model.model
-    elif type(model) == MultiModelWrapper and hasattr(model, "sub_models"):
-        check_model = model.sub_models[0]
-    setattr(model, "from_lua", False)
-    setattr(check_model, "from_lua", False)
-    for m in check_model.modules():
-        if "Conv2d" in m.__class__.__name__:
-            setattr(model, "from_lua", True)
-            setattr(check_model, "from_lua", True)
+#     check_model = model
+#     if hasattr(model, "model"):
+#         check_model = model.model
+#     elif type(model) == MultiModelWrapper and hasattr(model, "sub_models"):
+#         check_model = model.sub_models[0]
+#     setattr(model, "from_lua", False)
+#     setattr(check_model, "from_lua", False)
+#     for m in check_model.modules():
+#         if "Conv2d" in m.__class__.__name__:
+#             setattr(model, "from_lua", True)
+#             setattr(check_model, "from_lua", True)
 
-    return(model.from_lua)
+#     return(model.from_lua)
