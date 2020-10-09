@@ -150,37 +150,6 @@ def train(
         # return(running_loss / len(self.generators["train"]))
         print(running_loss / len(self.generators["train"]))
 
-
-
-    # model : torch.nn.Module
-    #     The model to train.
-    # criterion : torch.nn._Loss
-    #     The loss function to optimize.
-    # optimizer : torch.optim.Optimizer
-    #     The optimizer to minimize loss with.
-    # feature_index : dict
-    #     A dictionary that maps feature indices (`int`) to names (`int`).
-    # generators : dict
-    #     A dictionary that maps the `train`, `validation` and `test` steps
-    #     to `torch.utils.data.DataLoader` instances.
-
-
-    if verbose:
-        write(None, "*** Initializing model...")
-    model = DeepSEA(X_train.shape[2], 1)
-
-
-
-    # Initialize
-    max_epochs = 100
-
-    # if verbose:
-    #     write(None, "*** Initializing PyTorch...")
-
-    # # Set manual seed for reproducibility
-    # torch.manual_seed(seed)
-
-
 def __initialize_model(architecture, sequence_length, lr=0.001):
     """
     Adapted from:
