@@ -236,41 +236,60 @@ class Trainer(object):
         """
         Trains the model and measures validation performance.
         """
-        training_times = []
-        min_loss = self._min_loss
-        scheduler = ReduceLROnPlateau(
-            self.optimizer, "min", patience=16, verbose=True, factor=0.8
-        )
+        # training_times = []
+        # min_loss = self._min_loss
+        # scheduler = ReduceLROnPlateau(
+        #     self.optimizer, "min", patience=16, verbose=True, factor=0.8
+        # )
 
         for epoch in range(10):
 
-            # Train
-            t = time()
-            train_loss = self.train()
-            training_times.append(time() - t)
+            self.model.train() #tell model explicitly that we train
+            running_loss = 0.0
+            for seqs, labels in self.generators["train"]:
+                x = seqs.to(self.device, dtype=torch.float) #the input here is (batch_size, 4, 200)
+                labels = labels.to(self.device, dtype=torch.float)
+                #zero the existing gradients so they don't add up
+                self.optimizer.zero_grad()
+                # Forward pass
+                outputs = self.model(x.transpose(1, 2))
+                loss = self.criterion(outputs, labels) 
+                # Backward and optimize
+                loss.backward()
+                self.optimizer.step()
+                running_loss += loss.item()
+            #save training loss 
+            # return(running_loss / len(self.generators["train"]))
+            print(running_loss / len(self.generators["train"]))
 
-            # Checkpoint
-            checkpoint_dict = {
-                "epoch": epoch,
-                "arch": self.model.__class__.__name__,
-                "state_dict": self.model.state_dict(),
-                "min_loss": min_loss,
-                "optimizer": self.optimizer.state_dict()
-            }
-            write(
-                None,
-                "Epoch {0}: train loss is `{1}`.".format(epoch, train_loss)
-            )
-            checkpoint_filename = "checkpoint-{0}".format(
-                strftime("%m%d%H%M%S")
-            )
-            self.__save_checkpoint(
-                checkpoint_dict, False, prefix=checkpoint_filename
-            )
-            write(
-                None,
-                "Checkpoint `{0}.pth.tar` saved.".format(checkpoint_filename)
-            )
+
+            # # Train
+            # t = time()
+            # train_loss = self.train()
+            # training_times.append(time() - t)
+
+            # # Checkpoint
+            # checkpoint_dict = {
+            #     "epoch": epoch,
+            #     "arch": self.model.__class__.__name__,
+            #     "state_dict": self.model.state_dict(),
+            #     "min_loss": min_loss,
+            #     "optimizer": self.optimizer.state_dict()
+            # }
+            # write(
+            #     None,
+            #     "Epoch {0}: train loss is `{1}`.".format(epoch, train_loss)
+            # )
+            # checkpoint_filename = "checkpoint-{0}".format(
+            #     strftime("%m%d%H%M%S")
+            # )
+            # self.__save_checkpoint(
+            #     checkpoint_dict, False, prefix=checkpoint_filename
+            # )
+            # write(
+            #     None,
+            #     "Checkpoint `{0}.pth.tar` saved.".format(checkpoint_filename)
+            # )
 
             # # Validate
             # valid_scores = self.validate()
