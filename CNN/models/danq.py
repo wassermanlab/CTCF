@@ -44,5 +44,5 @@ def get_criterion():
     """
     return(nn.BCEWithLogitsLoss())
 
-def get_optimizer(params, lr=0.001):
+def get_optimizer(params, lr=0.01):
     return(torch.optim.Adam(params, lr=lr))

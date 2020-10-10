@@ -11,16 +11,16 @@ def one_hot_encode(seqs):
     # Initialize
     encoded_seqs = []
     one_hot_encoder = {
-        "A": [1, 0, 0, 0],
-        "C": [0, 1, 0, 0],
-        "G": [0, 0, 1, 0],
-        "T": [0, 0, 0, 1],
-        "N": [0, 0, 0, 0]
+        "A": [1., 0., 0., 0.],
+        "C": [0., 1., 0., 0.],
+        "G": [0., 0., 1., 0.],
+        "T": [0., 0., 0., 1.],
+        "N": [0., 0., 0., 0.]
     }
 
     for seq in seqs:
         encoded_seq = np.array(
-            [one_hot_encoder.get(s, [0, 0, 0, 0]) for s in seq]
+            [one_hot_encoder.get(s, [0., 0., 0., 0.]) for s in seq]
         )
         encoded_seqs.append(encoded_seq)
 

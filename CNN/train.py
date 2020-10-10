@@ -1,8 +1,9 @@
 import click
 import numpy as np
 import torch
+from torch.autograd import Variable
 from torch.utils.data import DataLoader
-import torch.nn as nn
+
 
 from models.danq import DanQ, get_criterion, get_optimizer
 from utils.io import write
@@ -27,7 +28,7 @@ CONTEXT_SETTINGS = {
 @click.option(
     "-l", "--learn-rate",
     help="Learning rate.",
-    default=0.003,
+    default=0.01,
     show_default=True
 )
 @click.option(
@@ -121,7 +122,8 @@ def train(
         write(None, "*** Training/Validating model...")
 
     # Use CUDA
-    if torch.cuda.is_available():
+    use_cuda = torch.cuda.is_available()
+    if use_cuda:
         device = torch.device("cuda:0")
         model.cuda()
         criterion.cuda()
@@ -133,14 +135,16 @@ def train(
 
         model.train() #tell model explicitly that we train
         running_loss = 0.0
-        for seqs, labels in generators["train"]:
-            x = seqs.to(device, dtype=torch.float) #the input here is (batch_size, 4, 200)
-            labels = labels.to(device, dtype=torch.float)
+        for inputs, targets in generators["train"]:
+
+            inputs = inputs.float().to(device)
+            targets = targets.float().to(device)
+
             #zero the existing gradients so they don't add up
             optimizer.zero_grad()
             # Forward pass
-            outputs = model(x.transpose(1, 2))
-            loss = criterion(outputs, labels) 
+            outputs = model(inputs.transpose(1, 2))
+            loss = criterion(outputs, targets) 
             # Backward and optimize
             loss.backward()
             optimizer.step()
@@ -149,7 +153,7 @@ def train(
         # return(running_loss / len(self.generators["train"]))
         print(running_loss / len(generators["train"]))
 
-def __initialize_model(architecture, sequence_length, lr=0.001):
+def __initialize_model(architecture, sequence_length, lr=0.01):
     """
     Adapted from:
     https://selene.flatironinstitute.org/utils.html#initialize-model

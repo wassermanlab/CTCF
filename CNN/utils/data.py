@@ -41,12 +41,12 @@ def split_data(pos_sequences, neg_sequences, seed=123):
     # One hot encode positive sequences
     encoded_seqs = one_hot_encode_fasta_file(pos_sequences)
     data = copy(encoded_seqs)
-    labels = np.array([[1]] * len(encoded_seqs))
+    labels = np.array([[1.]] * len(encoded_seqs))
 
     # One hot encode negative sequences
     encoded_seqs = one_hot_encode_fasta_file(pos_sequences)
     data = np.append(data, encoded_seqs, axis=0)
-    labels = np.append(labels, np.array([[0]] * len(encoded_seqs)), axis=0)
+    labels = np.append(labels, np.array([[0.]] * len(encoded_seqs)), axis=0)
 
     # Split data
     indices = list(range(len(data)))
