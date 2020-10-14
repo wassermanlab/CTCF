@@ -112,17 +112,8 @@ def train(
         architecture, features, data_loaders, learn_rate, max_epochs,
         out_dir, verbose
     )
-    # trainer.train_and_validate()
-    # trainer.visualize_loss()
     trainer.test()
     trainer.compute_performance_metrics()
-
-    if verbose:
-        write(None, "*** Evaluating model...")
-
-    # Test model
-    # trainer.visualize_performance()
-
 
 if __name__ == "__main__":
     train()
