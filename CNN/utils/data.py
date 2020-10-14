@@ -1,70 +1,110 @@
 import numpy as np
+from sklearn.model_selection import train_test_split
 import torch
+from torch.utils.data import DataLoader, TensorDataset
 
-from dragonn import one_hot_encode, reverse_complement
+from .io import parse_fasta_file
 
-class Dataset(torch.utils.data.Dataset):
-    """
-    Adapted from:
-    https://stanford.edu/~shervine/blog/pytorch-how-to-generate-data-parallel
-    """
+# Defaults
+default_parameters = dict(batch_size=64, shuffle=True, num_workers=1)
 
-    def __init__(self, data, labels):
-        """Initialization."""
-        self.data = data
-        self.labels = labels
+def get_data_loaders(tensor_datasets, kwargs=default_parameters):
 
-    def __len__(self):
-        """Total number of samples."""
-        return(len(self.data))
+    data_loaders = {}
 
-    def __getitem__(self, idx):
-        """Generates one sample of data."""
-        return(self.data[idx], self.labels[idx])
+    for k, v in tensor_datasets.items():
+        data_loaders.setdefault(k, DataLoader(v, **kwargs))
 
-def build_dataset(data, labels, indices, rev_complement=False):
+    return(data_loaders)
 
-    data = data[indices]
-    labels = labels[indices]
+def get_tensor_datasets(data_splits):
 
-    if rev_complement:
-        data = np.append(data, reverse_complement(data), axis=0)
-        labels = np.append(labels, labels, axis=0)
+    tensor_datasets = {}
 
-    return(Dataset(data, labels))
+    for k, v in data_splits.items():
+        data = torch.Tensor(v[0])
+        labels = torch.Tensor(v[1])
+        tensor_datasets.setdefault(k, TensorDataset(data, labels))
 
-def split_data(pos_sequences, neg_sequences, seed=123):
+    return(tensor_datasets)
 
-    from copy import copy
-    from sklearn.model_selection import train_test_split
+def split_data(pos_sequences, neg_sequences, rev_complement=False, seed=123):
 
-    # One hot encode positive sequences
-    encoded_seqs = one_hot_encode_fasta_file(pos_sequences)
-    data = copy(encoded_seqs)
-    labels = np.array([[1.]] * len(encoded_seqs))
+    # Data
+    pos_encoded_seqs = one_hot_encode_FASTA_file(pos_sequences)
+    neg_encoded_seqs = one_hot_encode_FASTA_file(neg_sequences)
+    data = np.concatenate((pos_encoded_seqs, neg_encoded_seqs))
 
-    # One hot encode negative sequences
-    encoded_seqs = one_hot_encode_fasta_file(pos_sequences)
-    data = np.append(data, encoded_seqs, axis=0)
-    labels = np.append(labels, np.array([[0.]] * len(encoded_seqs)), axis=0)
+    # Labels
+    pos_labels = np.ones((len(pos_encoded_seqs), 1))
+    neg_labels = np.zeros((len(neg_encoded_seqs) ,1))
+    labels = np.concatenate((pos_labels, neg_labels))
 
-    # Split data
+    # Data splits
     indices = list(range(len(data)))
     train, test = train_test_split(indices, test_size=0.2, random_state=seed)
     validation, test = train_test_split(test, test_size=0.5, random_state=seed)
-    splits = {"train": train, "validation": validation, "test": test}
+    data_splits = {
+        "train": [data[train], labels[train]],
+        "validation": [data[validation], labels[validation]],
+        "test": [data[test], labels[test]]
+    }
 
-    return(data, labels, splits)
+    # Reverse complement
+    if rev_complement:
+        data, labels = data_splits["train"][0], data_splits["train"][1]
+        data_splits["train"][0] = np.append(
+            data, reverse_complement(data), axis=0
+        )
+        data_splits["train"][1] = np.append(labels, labels, axis=0)
 
-def one_hot_encode_fasta_file(fasta_file):
+    return(data_splits)
+
+def one_hot_encode_FASTA_file(fasta_file):
     """One hot encodes sequences in a FASTA file."""
 
-    from .io import parse_fasta_file
-
     # Initialize
-    seqs = []
+    encoded_seqs = []
 
     for seq_record in parse_fasta_file(fasta_file):
-        seqs.append(str(seq_record.seq).upper())
+        encoded_seqs.append(one_hot_encode(str(seq_record.seq).upper()))
 
-    return(one_hot_encode(seqs))
+    return(np.array(encoded_seqs))
+
+def one_hot_encode(seq):
+    """One hot encodes a sequence."""
+
+    seq = seq.replace("A", "0")
+    seq = seq.replace("C", "1")
+    seq = seq.replace("G", "2")
+    seq = seq.replace("T", "3")
+
+    encoded_seq = np.zeros((4, len(seq)), dtype="float16")
+
+    for i in range(len(seq)):
+        if seq[i].isdigit():
+            encoded_seq[int(seq[i]), i] = 1
+        else:
+            # i.e. Ns
+            encoded_seq[:, i] = 0.25
+
+    return(encoded_seq)
+
+def one_hot_decode(encoded_seq):
+    """Reverts a sequence's one hot encoding."""
+
+    seq = []
+    code = list("ACGT")
+ 
+    for i in encoded_seq.transpose(1, 0):
+        try:
+            seq.append(code[int(np.where(i == 1)[0])])
+        except:
+            # i.e. N?
+            seq.append("N")
+
+    return("".join(seq))
+
+def reverse_complement(encoded_seqs):
+    """Reverse complements a list of one hot encoded sequences."""
+    return(encoded_seqs[..., ::-1, ::-1])

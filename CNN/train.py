@@ -1,13 +1,9 @@
 import click
 import numpy as np
-import torch
-from torch.autograd import Variable
-from torch.utils.data import DataLoader
 
-
-from models.danq import DanQ, get_criterion, get_optimizer
 from utils.io import write
-from utils.data import build_dataset, split_data
+from utils.data import get_data_loaders, get_tensor_datasets, split_data
+from utils.trainer import Trainer
 
 CONTEXT_SETTINGS = {
     "help_option_names": ["-h", "--help"],
@@ -17,18 +13,21 @@ CONTEXT_SETTINGS = {
 @click.option(
     "-a", "--architecture",
     help="Model architecture.",
-    default="deeperdeepsea",
+    default="danq",
     metavar="STRING",
     show_default=True,
-    type=click.Choice(
-        ["danq"],
-        case_sensitive=False
-    )
+    type=click.Choice(["danq", "deepsea"], case_sensitive=False)
 )
 @click.option(
     "-l", "--learn-rate",
     help="Learning rate.",
-    default=0.01,
+    default=0.003,
+    show_default=True
+)
+@click.option(
+    "-m", "--max-epochs",
+    help="Max. number of epochs.",
+    default=100,
     show_default=True
 )
 @click.option(
@@ -82,106 +81,46 @@ CONTEXT_SETTINGS = {
 )
 
 def train(
-    name, neg_sequences, pos_sequences, architecture="deeperdeepsea",
-    learn_rate=0.003, out_dir="./", rev_complement=False, seed=123, threads=1,
+    name, neg_sequences, pos_sequences, architecture="danq", learn_rate=0.003,
+    max_epochs=100, out_dir="./", rev_complement=False, seed=123, threads=1,
     verbose=False
 ):
     """Train a model."""
 
     if verbose:
-        write(None, "*** Loading sequence data...")
+        write(None, "*** Loading data...")
 
-    # Splits
-    data, labels, splits = split_data(pos_sequences, neg_sequences, seed)
-    total_sequences, sequence_length, one_hot_encoding_size = data.shape
-
-    # Datasets
-    datasets = {
-        "train": build_dataset(data, labels, splits["train"], rev_complement),
-        "validation": build_dataset(data, labels, splits["validation"]),
-        "test": build_dataset(data, labels, splits["test"])
-    }
-
-    # Generators
-    parameters = {"batch_size": 64, "shuffle": True, "num_workers": threads}
-    generators = {
-        "train": DataLoader(datasets["train"], **parameters),
-        "validation": DataLoader(datasets["validation"], **parameters),
-        "test": DataLoader(datasets["test"], **parameters)
-    }
-
-    if verbose:
-        write(None, "*** Initializing model...")
-
-    # Initialize model
-    model, criterion, optimizer = __initialize_model(
-        architecture, sequence_length, learn_rate
+    # Data splits
+    data_splits = split_data(
+        pos_sequences, neg_sequences, rev_complement, seed
     )
 
-    if verbose:
-        write(None, "*** Training/Validating model...")
+    # Tensor datasets
+    tensor_datasets = get_tensor_datasets(data_splits)
 
-    # Use CUDA
-    use_cuda = torch.cuda.is_available()
-    if use_cuda:
-        device = torch.device("cuda:0")
-        model.cuda()
-        criterion.cuda()
-    else:
-        device = torch.device("cpu")
+    # Data loaders
+    # parameters = dict(batch_size=64, shuffle=True, num_workers=threads)
+    parameters = dict(batch_size=64)
+    data_loaders = get_data_loaders(tensor_datasets, parameters)
+
+    if verbose:
+        write(None, "*** Training model...")
 
     # Train/validate model
-    for epoch in range(10):
+    features = {0: name}
+    trainer = Trainer(
+        architecture, features, data_loaders, learn_rate, max_epochs,
+        out_dir, verbose
+    )
+    trainer.train_and_validate()
+    trainer.visualize_loss()
 
-        model.train() #tell model explicitly that we train
-        running_loss = 0.0
-        for inputs, targets in generators["train"]:
+    if verbose:
+        write(None, "*** Evaluating model...")
 
-            inputs = inputs.float().to(device)
-            targets = targets.float().to(device)
+    # Test model
+    # trainer.visualize_performance()
 
-            #zero the existing gradients so they don't add up
-            optimizer.zero_grad()
-            # Forward pass
-            outputs = model(inputs.transpose(1, 2))
-            loss = criterion(outputs, targets) 
-            # Backward and optimize
-            loss.backward()
-            optimizer.step()
-            running_loss += loss.item()
-        #save training loss 
-        # return(running_loss / len(self.generators["train"]))
-        print(running_loss / len(generators["train"]))
-
-def __initialize_model(architecture, sequence_length, lr=0.01):
-    """
-    Adapted from:
-    https://selene.flatironinstitute.org/utils.html#initialize-model
-
-    Initialize model (and associated criterion, optimizer)
-
-    Parameters
-    ----------
-    architecture : str
-        Available model architectures: `danq`, `deeperdeepsea`, `deepsea` and
-        `heartenn`.
-    sequence_length : int
-        Model-specific configuration
-    lr : float
-        Learning rate.
-
-    Returns
-    -------
-    tuple(torch.nn.Module, torch.nn._Loss, torch.optim)
-        * `torch.nn.Module` - the model architecture
-        * `torch.nn._Loss` - the loss function associated with the model
-        * `torch.optim` - the optimizer associated with the model
-    """
-    model = DanQ(sequence_length, 1)
-    criterion = get_criterion()
-    optimizer = get_optimizer(model.parameters(), lr)
-
-    return(model, criterion, optimizer)
 
 if __name__ == "__main__":
     train()

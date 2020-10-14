@@ -6,34 +6,61 @@ import math
 import numpy as np
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 class DanQ(nn.Module):
-    def __init__(self, sequence_length, num_classes):
+    """
+    Parameters
+    ----------
+    sequence_length : int
+        The length of the sequences on which the model trains and and
+        makes predictions.
+    n_targets : int
+        The number of targets (classes) to predict.
+
+    Attributes
+    ----------
+    nnet : torch.nn.Sequential
+        Some description.
+    bilstm : torch.nn.Sequential
+        Some description.
+    classifier : torch.nn.Sequential
+        The linear classifier component of the model.
+    """
+
+    def __init__(self, sequence_length, n_targets):
         super(DanQ, self).__init__()
-        self.Conv1 = nn.Conv1d(in_channels=4, out_channels=320, kernel_size=26)
-        self.Maxpool = nn.MaxPool1d(kernel_size=13, stride=13)
-        self.Drop1 = nn.Dropout(p=0.2)
-        self.BiLSTM = nn.LSTM(input_size=320, hidden_size=320, num_layers=2,
-                                 batch_first=True,
-                                 dropout=0.5,
-                                 bidirectional=True)
-        self.Linear1 = nn.Linear(13*640, 925)
-        self.Linear2 = nn.Linear(925, num_classes)
+
+        self._n_channels = math.floor((sequence_length - 25) / 13)
+
+        self.nnet = nn.Sequential(
+            nn.Conv1d(4, 320, kernel_size=26),
+            nn.ReLU(inplace=True),
+            nn.MaxPool1d(kernel_size=13, stride=13),
+            nn.Dropout(0.2)
+        )
+
+        self.bilstm = nn.Sequential(
+            nn.LSTM(
+                320, 320, num_layers=2, batch_first=True, bidirectional=True,
+                dropout=0.5
+            )
+        )
+
+        self.classifier = nn.Sequential(
+            nn.Linear(self._n_channels * 640, 925),
+            nn.ReLU(inplace=True),
+            nn.Linear(925, n_targets),
+        )
 
     def forward(self, x):
-        x = self.Conv1(x)
-        x = torch.nn.functional.relu(x)
-        x = self.Maxpool(x)
-        x = self.Drop1(x)
-        x_x = torch.transpose(x, 1, 2)
-        x, (h_n,h_c) = self.BiLSTM(x_x)
-        x = x.contiguous().view(-1, 13*640)
-        x = self.Linear1(x)
-        x = torch.nn.functional.relu(x)
-        x = self.Linear2(x)
+        out = self.nnet(x)
+        reshape_out = torch.transpose(out, 1, 2)
+        out, _ = self.bilstm(reshape_out)
+        reshape_out = out.contiguous().view(-1, self._n_channels * 640)
 
-        return(x)
-
+        return(self.classifier(reshape_out))
+    
 def get_criterion():
     """
     Specify the appropriate loss function (criterion) for this model.
@@ -44,5 +71,5 @@ def get_criterion():
     """
     return(nn.BCEWithLogitsLoss())
 
-def get_optimizer(params, lr=0.01):
+def get_optimizer(params, lr=0.003):
     return(torch.optim.Adam(params, lr=lr))
