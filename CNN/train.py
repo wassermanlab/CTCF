@@ -32,7 +32,7 @@ CONTEXT_SETTINGS = {
 )
 @click.option(
     "-n", "--name",
-    help="Transcription factor name.",
+    help="Feature name.",
     required=True,
     type=str
 )
@@ -112,8 +112,10 @@ def train(
         architecture, features, data_loaders, learn_rate, max_epochs,
         out_dir, verbose
     )
-    trainer.train_and_validate()
-    trainer.visualize_loss()
+    # trainer.train_and_validate()
+    # trainer.visualize_loss()
+    trainer.test()
+    trainer.compute_performance_metrics()
 
     if verbose:
         write(None, "*** Evaluating model...")
