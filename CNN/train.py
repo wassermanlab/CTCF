@@ -32,7 +32,7 @@ CONTEXT_SETTINGS = {
 )
 @click.option(
     "-n", "--name",
-    help="Feature name.",
+    help="Transcription factor name.",
     required=True,
     type=str
 )
@@ -99,21 +99,22 @@ def train(
     tensor_datasets = get_tensor_datasets(data_splits)
 
     # Data loaders
-    # parameters = dict(batch_size=64, shuffle=True, num_workers=threads)
-    parameters = dict(batch_size=64)
+    parameters = dict(batch_size=64, shuffle=True, num_workers=threads)
     data_loaders = get_data_loaders(tensor_datasets, parameters)
 
     if verbose:
         write(None, "*** Training model...")
 
-    # Train/validate model
-    features = {0: name}
+    # Train model
     trainer = Trainer(
-        architecture, features, data_loaders, learn_rate, max_epochs,
+        architecture, name, data_loaders, learn_rate, max_epochs,
         out_dir, verbose
     )
+    trainer.train_and_validate()
+    trainer.visualize_loss()
     trainer.test()
     trainer.compute_performance_metrics()
+    trainer.save()
 
 if __name__ == "__main__":
     train()
