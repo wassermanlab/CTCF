@@ -191,6 +191,8 @@ def _get_profiles(profiles_dir, latest=False, profile=[], taxon=taxons):
 
         # Initialize
         taxon_dir = os.path.join(os.path.abspath(profiles_dir), t)
+        if not os.path.exists(taxon_dir):
+            continue
 
         # For each profile...
         for profile_file in sorted(os.listdir(taxon_dir), reverse=True):
