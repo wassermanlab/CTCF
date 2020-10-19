@@ -125,12 +125,12 @@ def build_matrix(encode_dir, fasta_file, out_dir="."):
             b = BedTool("\n".join(map(str, intervals)), from_string=True).saveas(dnase_seq_file)
 
         # Skip if DNase-seq file for this sample already exist
-        chip_seq_file = os.path.join(out_dir, ".ChIP-seq.CTCF.%s.bed" % sample)
+        chip_seq_file = os.path.join(out_dir, ".TF.CTCF.%s.bed" % sample)
         if not os.path.exists(chip_seq_file):
 
             # Initialize
             intervals = []
-            a = BedTool(os.path.join(encode_dir, "ChIP-seq.CTCF.200bp.bed"))
+            a = BedTool(os.path.join(encode_dir, "TF.CTCF.200bp.bed"))
 
             for interval in a:
                 encode_tfs = encodes_tfs[interval.fields[3]]
