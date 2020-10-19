@@ -29,48 +29,30 @@ class Predictor(object):
 
     Parameters
     ----------
-    architecture : str
-        The model architecture to train.
-    state_dict : str
-        Path to model's `state_dict`.
-    generators : dict
-        A dictionary that maps the `train`, `validation` and `test` steps
-        to `torch.utils.data.DataLoader` instances.
-    lr: float, optional
-        Default is 0.003. Sets the learning rate.
-    max_epochs : int, optional
-        Default is 100. The maximum number of epochs to iterate over.
+    model : `torch.nn.Module`
+        The model to use.
+    generator : `torch.utils.data.DataLoader`
+        The sequence generator.
     output_dir : str, optional
         Default is current working directory. The output directory to save
-        model checkpoints and logs in.
-    threads : int, optional
-        Default is 1. Sets the number threads for CPU operations.
+        plots and predictions.
     verbose: bool, optional
         Default is `False`.
 
     Attributes
     ----------
-    criterion : `torch.nn._Loss`
-        The loss function to optimize.
-    features : dict
-        The name of each feature.
+    model : `torch.nn.Module`
+        The model to use.
     generator : `torch.utils.data.DataLoader`
-        The generator for the `train`, `validation` and `test` sets.
-    max_epochs : int
-        The maximum number of epochs to iterate over.
+        The generator of sequences.
     metrics : dict
         A dictionary that maps metric names (`str`) to metric functions. By
         default, this contains `"roc_auc"`, which maps to
         `sklearn.metrics.roc_auc_score`, `"average_precision"`, which maps to
         `sklearn.metrics.average_precision_score`, and `"m_corr_coef"`, which
         maps to `sklearn.metrics.matthews_corrcoef`.
-    model : `torch.nn.Module`
-        The model to train.
-
-    optimizer : `torch.optim.Optimizer`
-        The optimizer to minimize loss with.
     output_dir : str
-        The directory to save model checkpoints and files.
+        The directory to save predictions and plots.
     """
 
     def __init__(

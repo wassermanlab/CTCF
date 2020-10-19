@@ -1,37 +1,21 @@
-"""
-DanQ architecture (Quang & Xie, 2016).
-"""
-
-import math
-import numpy as np
+# Adapted from:
+# https://github.com/FunctionLab/selene/blob/master/models/danQ.py
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 
 class DanQ(nn.Module):
-    """
-    Parameters
-    ----------
-    sequence_length : int
-        The length of the sequences on which the model trains and and
-        makes predictions.
-    n_targets : int
-        The number of targets (classes) to predict.
+    """DanQ architecture (Quang & Xie, 2016)."""
 
-    Attributes
-    ----------
-    nnet : torch.nn.Sequential
-        Some description.
-    bilstm : torch.nn.Sequential
-        Some description.
-    classifier : torch.nn.Sequential
-        The linear classifier component of the model.
-    """
-
-    def __init__(self, sequence_length, n_targets):
+    def __init__(self, sequence_length, n_features):
+        """
+        Parameters
+        ----------
+        sequence_length : int
+            Input sequence length
+        n_features : int
+            Total number of features to predict
+        """
         super(DanQ, self).__init__()
-
-        self._n_channels = math.floor((sequence_length - 25) / 13)
 
         self.nnet = nn.Sequential(
             nn.Conv1d(4, 320, kernel_size=26),
@@ -40,27 +24,34 @@ class DanQ(nn.Module):
             nn.Dropout(0.2)
         )
 
-        self.bilstm = nn.Sequential(
+        self.bdlstm = nn.Sequential(
             nn.LSTM(
-                320, 320, num_layers=2, batch_first=True, bidirectional=True,
-                dropout=0.5
+                320, 320, num_layers=1, batch_first=True, bidirectional=True
             )
         )
 
+        self._n_channels = math.floor((sequence_length - 25) / 13)
+
         self.classifier = nn.Sequential(
+            nn.Dropout(0.5),
             nn.Linear(self._n_channels * 640, 925),
             nn.ReLU(inplace=True),
-            nn.Linear(925, n_targets),
+            nn.Linear(925, n_features),
+            nn.Sigmoid()
         )
 
     def forward(self, x):
+        """Forward propagation of a batch."""
         out = self.nnet(x)
-        reshape_out = torch.transpose(out, 1, 2)
-        out, _ = self.bilstm(reshape_out)
-        reshape_out = out.contiguous().view(-1, self._n_channels * 640)
+        reshape_out = out.transpose(0, 1).transpose(0, 2)
+        out, _ = self.bdlstm(reshape_out)
+        out = out.transpose(0, 1)
+        reshape_out = out.contiguous().view(
+            out.size(0), 640 * self._n_channels)
+        predict = self.classifier(reshape_out)
 
-        return(self.classifier(reshape_out))
-    
+        return(predict)
+
 def get_criterion():
     """
     Specify the appropriate loss function (criterion) for this model.
@@ -69,7 +60,7 @@ def get_criterion():
     -------
     torch.nn._Loss
     """
-    return(nn.BCEWithLogitsLoss())
+    return(nn.BCELoss())
 
-def get_optimizer(params, lr=0.003):
+def get_optimizer(params, lr=0.001):
     return(torch.optim.Adam(params, lr=lr))

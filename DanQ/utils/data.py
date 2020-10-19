@@ -106,5 +106,5 @@ def one_hot_decode(encoded_seq):
     return("".join(seq))
 
 def reverse_complement(encoded_seqs):
-    """Reverse complements a list of one hot encoded sequences."""
+    """Reverse complements one hot encoding for a list of sequences."""
     return(encoded_seqs[..., ::-1, ::-1])
