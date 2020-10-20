@@ -1,30 +1,30 @@
 #!/bin/bash
 
 # Initialize
-DRAGONN_DIR=../DragoNN
+DANQ_DIR=../DanQ
 
 # Make predictions with CTCF models trained w/ DragoNN
 # https://github.com/kundajelab/dragonn
 
-for M in CTCF CTCF-fwd CTCF-rev
+for M in CTCF-rc CTCF-fwd
 do
+
+    # Initialize
+    STAT_DICT=${DANQ_DIR}/${M}/model.pth.tar
 
     # mm10
     OUT_DIR=./mm10/${M}
-    mkdir -p ${OUT_DIR}
-
+    mkdir -p $OUT_DIR
 
     for T in cerebellum forebrain heart hindbrain intestine kidney liver lung midbrain stomach thymus
     do
         for S in pos_seqs neg_seqs
         do
-            ARCH_FILE=${DRAGONN_DIR}/${M}.arch.json
-            WEIGHTS_FILE=${DRAGONN_DIR}/${M}.weights.h5
+            echo "*** predict ${T}, ${S}, ${M}"
             SEQ_FILE=../Sequences/mm10/${S}.${T}.fa
-            OUT_FILE=${OUT_DIR}/${S}.${T}.txt
-            # Extract uniform DNase-seq regions of length 150 bp
-            if [ ! -f ${OUT_FILE} ]; then
-            dragonn predict --sequences ${SEQ_FILE} --arch-file ${ARCH_FILE} --weights-file ${WEIGHTS_FILE} --output-file ${OUT_FILE}
+            OUT_FILE=${OUT_DIR}/${S}.${T}.txt.gz
+            if [ ! -f $OUT_FILE ]; then
+                python predict.py -f $SEQ_FILE -o $OUT_FILE -s $STAT_DICT -r
             fi
         done
     done

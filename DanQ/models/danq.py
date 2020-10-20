@@ -1,5 +1,6 @@
 # Adapted from:
 # https://github.com/FunctionLab/selene/blob/master/models/danQ.py
+import math
 import torch
 import torch.nn as nn
 
