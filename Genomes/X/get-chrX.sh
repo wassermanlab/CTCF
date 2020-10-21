@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for g in bosTau6 equCab3 gorGor4 hg38 mm10 oviAri3 panPan2 panTro6 ponAbe3
+for g in bosTau6 equCab3 gorGor5 hg38 mm9 oviAri3 panPan3 panTro6 ponAbe3 susScr11
 do
     if [ ! -f ${g}.chrX.fa ]; then
         mkdir ${g}
