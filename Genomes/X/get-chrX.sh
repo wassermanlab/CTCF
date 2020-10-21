@@ -17,3 +17,7 @@ do
         rm -rf ${g}
     fi
 done
+
+if [ ! -f CHIR_1.0.chrX.f ]; then
+    efetch -db nuccore -id CM001739.1 -format fasta > CHIR_1.0.chrX.f
+fi
