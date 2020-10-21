@@ -6,7 +6,7 @@ DANQ_DIR=../DanQ
 # Make predictions with CTCF models trained w/ DragoNN
 # https://github.com/kundajelab/dragonn
 
-for M in CTCF-rc CTCF-fwd
+for M in CTCF CTCF-fwd
 do
 
     # Initialize
