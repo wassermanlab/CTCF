@@ -1,21 +1,4 @@
-# from Bio import SeqIO
-# import gzip
-# import math
-# import matplotlib.pyplot as plt
-# import numpy as np
-# import os
-# import seaborn as sns
-# from sklearn.metrics import (
-#     average_precision_score, precision_recall_curve,
-#     roc_auc_score, roc_curve,
-#     matthews_corrcoef
-# )
-# from sklearn.model_selection import train_test_split
-# from time import time
-# import torch.nn as nn
-# from torch.optim.lr_scheduler import ReduceLROnPlateau
-
-# from utils.pytorchtools import EarlyStopping
+#!/usr/bin/env python
 
 from Bio import SeqIO
 import click
@@ -28,7 +11,6 @@ from torch.utils.data import DataLoader, TensorDataset
 from models.danq import DanQ
 from utils.io import parse_fasta_file, write
 from utils.data import one_hot_encode, reverse_complement
-#from utils.predictor import Predictor
 
 CONTEXT_SETTINGS = {
     "help_option_names": ["-h", "--help"],
@@ -67,6 +49,10 @@ CONTEXT_SETTINGS = {
 )
 
 def predict(fasta_file, out_file, state_dict, rev_complement=False, threads=1):
+
+    _predict(fasta_file, out_file, state_dict, rev_complement, threads)
+
+def _predict(fasta_file, out_file, state_dict, rev_complement=False, threads=1):
 
     # Sequences
     sequences = []
