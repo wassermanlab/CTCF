@@ -33,8 +33,10 @@ do
     for G in bosTau6 CHIR_1.0 equCab3 gorGor5 hg38 mm9 oviAri3 panPan3 panTro6 ponAbe3 susScr11
     do
         echo "*** predict ${G}, ${M}"
+        OUT_DIR=./${G}
+        mkdir -p $OUT_DIR
         SEQ_FILE=${CHRX_DIR}/${G}.chrX.fa
-        OUT_FILE=./${G}.chrX.txt.gz
+        OUT_FILE=./${OUT_DIR}/${M}.chrX.txt.gz
         if [ ! -f $OUT_FILE ]; then
             python predict-X.py -f $SEQ_FILE -o $OUT_FILE -s $STAT_DICT -r
         fi
