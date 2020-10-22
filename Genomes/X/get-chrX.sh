@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for g in bosTau6 equCab3 gorGor5 hg38 mm9 oviAri3 panPan3 panTro6 ponAbe3 susScr11
+for g in bosTau6 equCab3 gorGor4 hg38 mm9 oviAri3 panPan3 panTro6 ponAbe3 susScr11
 do
     if [ ! -f ${g}.chrX.fa ]; then
         mkdir ${g}
@@ -18,6 +18,10 @@ do
     fi
 done
 
-if [ ! -f CHIR_1.0.chrX.f ]; then
-    efetch -db nuccore -id CM001739.1 -format fasta > CHIR_1.0.chrX.f
+if [ ! -f gorGor5.chrX.fa ]; then
+    efetch -db nuccore -id LT578347.1 -format fasta > gorGor5.chrX.fa
+fi
+
+if [ ! -f CHIR_1.0.chrX.fa ]; then
+    efetch -db nuccore -id CM001739.1 -format fasta > CHIR_1.0.chrX.fa
 fi
