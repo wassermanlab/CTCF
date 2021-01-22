@@ -9,21 +9,20 @@ b = BedTool("tss2.bed")
 
 tads = []
 
-# i.e. TADs from Hicarus, not disclosed
-# hic_dir = "/arc/project/ex-ofornes-1/Hi-C/"
-#
-# for d in os.listdir(hic_dir):
-#     if os.path.isdir(os.path.join(hic_dir, d)):
-#         tads_file = os.path.join(hic_dir, d, "tads", "tads-hg38.50kb.bed")
-#         if os.path.exists(tads_file):
-#             c = BedTool(tads_file)
-#             for interval in c.intersect(a, wa=True):
-#                 tads.append(("tss1", d, interval["chrom"], interval["start"],
-#                     interval["end"], interval["name"]))
-#             for interval in c.intersect(b, wa=True):
-#                 tads.append(("tss2", d, interval["chrom"], interval["start"],
-#                     interval["end"], interval["name"]))
+# Untar and uncompress Hi-C.tgz (i.e. TADs from Hicarus, unpublished)
+hic_dir = "./Hi-C/"
 
+for d in os.listdir(hic_dir):
+    if os.path.isdir(os.path.join(hic_dir, d)):
+        tads_file = os.path.join(hic_dir, d, "tads", "tads-hg38.50kb.bed")
+        if os.path.exists(tads_file):
+            c = BedTool(tads_file)
+            for interval in c.intersect(a, wa=True):
+                tads.append(("tss1", d, interval["chrom"], interval["start"],
+                    interval["end"], interval["name"]))
+            for interval in c.intersect(b, wa=True):
+                tads.append(("tss2", d, interval["chrom"], interval["start"],
+                    interval["end"], interval["name"]))
 
 # Unzip hg38.TADs.zip (i.e. TADs from the 3D Genome Browser)
 hic_dir = "./hg38/"
