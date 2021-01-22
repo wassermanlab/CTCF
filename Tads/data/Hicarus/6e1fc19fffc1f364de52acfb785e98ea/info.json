@@ -1,0 +1,36 @@
+{
+    "Bioproject": "PRJNA228983",
+    "Biosample name": "H1 Trophectoderm cells",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN02404685",
+            "Experiment": "SRX378279",
+            "Runs": [
+                "SRR1030756",
+                "SRR1030757",
+                "SRR1030758",
+                "SRR1030759",
+                "SRR1030760",
+                "SRR1030761",
+                "SRR1030762"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN02404677",
+            "Experiment": "SRX378280",
+            "Runs": [
+                "SRR1030763",
+                "SRR1030764",
+                "SRR1030765"
+            ]
+        }
+    },
+    "Source": "PMID:25693564",
+    "Study accession": "SRP033089",
+    "Study name": "Global Reorganization of Chromatin Architecture during Embronic Stem Cell Differentiation",
+    "Unpaired": []
+}

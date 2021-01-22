@@ -1,0 +1,21 @@
+{
+    "Bioproject": "PRJNA540591",
+    "Biosample name": "beta-like cell (derived from WA09)",
+    "Biosample sex": "female",
+    "Enzyme": "DpnII",
+    "Experiment": "in situ Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN11547129",
+            "Experiment": "SRX5773153",
+            "Runs": [
+                "SRR8994268"
+            ]
+        }
+    },
+    "Source": "PMID:31231024",
+    "Study accession": "SRP194362",
+    "Study name": "Rapid Irreversible Transcriptional Reprogramming in Human Stem Cells Accompanied by Discordance between Replication Timing and Chromatin Compartment [Hi-C]",
+    "Unpaired": []
+}

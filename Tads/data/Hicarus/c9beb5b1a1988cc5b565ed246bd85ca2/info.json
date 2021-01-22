@@ -1,0 +1,24 @@
+{
+    "Bioproject": "PRJNA253910",
+    "Biosample name": "Aorta",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN02898032",
+            "Experiment": "SRX641265",
+            "Runs": [
+                "SRR1501138",
+                "SRR1501139",
+                "SRR1501140",
+                "SRR1501141"
+            ]
+        }
+    },
+    "Source": "PMID:25693566",
+    "Study accession": "SRP043660",
+    "Study name": "Integrative analysis of haplotype-resolved epigenomes across human tissues",
+    "Unpaired": []
+}

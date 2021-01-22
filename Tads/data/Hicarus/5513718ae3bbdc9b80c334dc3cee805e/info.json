@@ -1,0 +1,21 @@
+{
+    "Bioproject": "PRJNA178126",
+    "Biosample name": "forearm skin biopsy",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN01774245",
+            "Experiment": "SRX200032",
+            "Runs": [
+                "SRR605479"
+            ]
+        }
+    },
+    "Source": "PMID:25640177",
+    "Study accession": "SRP016586",
+    "Study name": "Correlated alterations in genome organization, histone methylation, and DNA-lamina interactions in Hutchinson-Gilford progeria syndrome (Hi-C)",
+    "Unpaired": []
+}

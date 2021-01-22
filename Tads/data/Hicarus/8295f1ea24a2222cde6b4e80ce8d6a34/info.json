@@ -1,0 +1,24 @@
+{
+    "Bioproject": "PRJNA343608",
+    "Biosample name": "Small Intenstine Tissue",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN05791249",
+            "Experiment": "SRX2179262",
+            "Runs": [
+                "SRR4272031",
+                "SRR4272032",
+                "SRR4272033",
+                "SRR4272034"
+            ]
+        }
+    },
+    "Source": "PMID:27851967",
+    "Study accession": "SRP090175",
+    "Study name": "A Compendium of Chromatin Contact Maps Reveal Spatially Active Regions in the Human Genome",
+    "Unpaired": []
+}

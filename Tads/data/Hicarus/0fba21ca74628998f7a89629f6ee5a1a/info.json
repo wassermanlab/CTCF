@@ -1,0 +1,26 @@
+{
+    "Bioproject": "PRJNA343608",
+    "Biosample name": "Right Ventricle Tissue",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN05791250",
+            "Experiment": "SRX2179261",
+            "Runs": [
+                "SRR4272025",
+                "SRR4272026",
+                "SRR4272027",
+                "SRR4272028",
+                "SRR4272029",
+                "SRR4272030"
+            ]
+        }
+    },
+    "Source": "PMID:27851967",
+    "Study accession": "SRP090175",
+    "Study name": "A Compendium of Chromatin Contact Maps Reveal Spatially Active Regions in the Human Genome",
+    "Unpaired": []
+}

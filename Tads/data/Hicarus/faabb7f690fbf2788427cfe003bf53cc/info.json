@@ -1,0 +1,24 @@
+{
+    "Bioproject": "PRJNA343608",
+    "Biosample name": "Adrenal Tissue",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN05791246",
+            "Experiment": "SRX2179246",
+            "Runs": [
+                "SRR4271980",
+                "SRR4271981",
+                "SRR4271982",
+                "SRR4271983"
+            ]
+        }
+    },
+    "Source": "PMID:27851967",
+    "Study accession": "SRP090175",
+    "Study name": "A Compendium of Chromatin Contact Maps Reveal Spatially Active Regions in the Human Genome",
+    "Unpaired": []
+}

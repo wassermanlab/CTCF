@@ -1,0 +1,35 @@
+{
+    "Bioproject": "PRJNA343608",
+    "Biosample name": "Bladder Tissue",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN05791245",
+            "Experiment": "SRX2179247",
+            "Runs": [
+                "SRR4271984",
+                "SRR4271985",
+                "SRR4271986",
+                "SRR4271987"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN05791244",
+            "Experiment": "SRX2179248",
+            "Runs": [
+                "SRR4271988",
+                "SRR4271989",
+                "SRR4271990",
+                "SRR4271991",
+                "SRR4271992"
+            ]
+        }
+    },
+    "Source": "PMID:27851967",
+    "Study accession": "SRP090175",
+    "Study name": "A Compendium of Chromatin Contact Maps Reveal Spatially Active Regions in the Human Genome",
+    "Unpaired": []
+}

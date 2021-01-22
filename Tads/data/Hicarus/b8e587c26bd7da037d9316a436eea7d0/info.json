@@ -1,0 +1,30 @@
+{
+    "Bioproject": "PRJNA417685",
+    "Biosample name": "mesodermal cell (derived from RUES2)",
+    "Biosample sex": "female",
+    "Enzyme": "DNase I",
+    "Experiment": "in situ DNase Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN08000752",
+            "Experiment": "SRX3375349",
+            "Runs": [
+                "SRR6269196",
+                "SRR6269197"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN08000751",
+            "Experiment": "SRX3375350",
+            "Runs": [
+                "SRR6269198",
+                "SRR6269199"
+            ]
+        }
+    },
+    "Source": "PMID:30948719",
+    "Study accession": "SRP124630",
+    "Study name": "Dynamic reorganization of nuclear architecture during human cardiogenesis [HiC-seq]",
+    "Unpaired": []
+}

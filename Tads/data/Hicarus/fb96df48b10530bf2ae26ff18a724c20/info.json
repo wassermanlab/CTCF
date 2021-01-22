@@ -1,0 +1,56 @@
+{
+    "Bioproject": "PRJEB5492",
+    "Biosample name": "GM12878",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Capture Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMEA2361910",
+            "Experiment": "ERX402308",
+            "Runs": [
+                "ERR436026"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMEA2361904",
+            "Experiment": "ERX402302",
+            "Runs": [
+                "ERR436028"
+            ]
+        },
+        "R3": {
+            "Biosample": "SAMEA2361905",
+            "Experiment": "ERX402303",
+            "Runs": [
+                "ERR436029"
+            ]
+        },
+        "R4": {
+            "Biosample": "SAMEA2361901",
+            "Experiment": "ERX402299",
+            "Runs": [
+                "ERR436030"
+            ]
+        },
+        "R5": {
+            "Biosample": "SAMEA2361903",
+            "Experiment": "ERX402301",
+            "Runs": [
+                "ERR436031"
+            ]
+        },
+        "R6": {
+            "Biosample": "SAMEA2361906",
+            "Experiment": "ERX402304",
+            "Runs": [
+                "ERR436033"
+            ]
+        }
+    },
+    "Source": "PMID:25938943",
+    "Study accession": "ERP004909",
+    "Study name": "Promoter capture GM12878 CD34",
+    "Unpaired": []
+}

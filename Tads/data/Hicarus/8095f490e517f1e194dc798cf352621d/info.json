@@ -1,0 +1,33 @@
+{
+    "Bioproject": "PRJNA343608",
+    "Biosample name": "Spleen Tissue",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN05791248",
+            "Experiment": "SRX2179263",
+            "Runs": [
+                "SRR4272035",
+                "SRR4272036",
+                "SRR4272037"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN05791247",
+            "Experiment": "SRX2179264",
+            "Runs": [
+                "SRR4272038",
+                "SRR4272039",
+                "SRR4272040",
+                "SRR4272041"
+            ]
+        }
+    },
+    "Source": "PMID:27851967",
+    "Study accession": "SRP090175",
+    "Study name": "A Compendium of Chromatin Contact Maps Reveal Spatially Active Regions in the Human Genome",
+    "Unpaired": []
+}

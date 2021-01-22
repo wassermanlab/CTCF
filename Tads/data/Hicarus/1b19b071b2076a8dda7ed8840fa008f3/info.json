@@ -1,0 +1,25 @@
+{
+    "Bioproject": "PRJNA253910",
+    "Biosample name": "Liver",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN02898031",
+            "Experiment": "SRX641267",
+            "Runs": [
+                "SRR1501147",
+                "SRR1501148",
+                "SRR1501149",
+                "SRR1501150",
+                "SRR1501151"
+            ]
+        }
+    },
+    "Source": "PMID:25693566",
+    "Study accession": "SRP043660",
+    "Study name": "Integrative analysis of haplotype-resolved epigenomes across human tissues",
+    "Unpaired": []
+}

@@ -1,0 +1,22 @@
+{
+    "Bioproject": "PRJNA240252",
+    "Biosample name": "SUM44",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Capture Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN02673533",
+            "Experiment": "SRX481669",
+            "Runs": [
+                "SRR1184221",
+                "SRR1184222"
+            ]
+        }
+    },
+    "Source": "PMID:25122612",
+    "Study accession": "SRP039464",
+    "Study name": "Unbiased Capture Hi-C reveals the potential targets of breast cancer susceptibility loci",
+    "Unpaired": []
+}

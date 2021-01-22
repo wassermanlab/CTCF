@@ -1,0 +1,22 @@
+{
+    "Bioproject": "PRJNA285958",
+    "Biosample name": "Jurkat",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Capture Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN03763367",
+            "Experiment": "SRX1050325",
+            "Runs": [
+                "SRR2052905",
+                "SRR2052906"
+            ]
+        }
+    },
+    "Source": "PMID:26616563",
+    "Study accession": "SRP059186",
+    "Study name": "Capture Hi-C reveals novel candidate genes and complex long-range interactions with related autoimmune risk loci",
+    "Unpaired": []
+}

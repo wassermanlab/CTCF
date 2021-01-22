@@ -1,0 +1,53 @@
+{
+    "Bioproject": "PRJNA309829",
+    "Biosample name": "ATCC CRL-2522",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN04440790",
+            "Experiment": "SRX1548038",
+            "Runs": [
+                "SRR3125952",
+                "SRR3125953",
+                "SRR3125954"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN04440791",
+            "Experiment": "SRX1548039",
+            "Runs": [
+                "SRR3125955",
+                "SRR3125956",
+                "SRR3125957",
+                "SRR3125958"
+            ]
+        },
+        "R3": {
+            "Biosample": "SAMN04440792",
+            "Experiment": "SRX1548040",
+            "Runs": [
+                "SRR3125959",
+                "SRR3125960",
+                "SRR3125961"
+            ]
+        },
+        "R4": {
+            "Biosample": "SAMN04440793",
+            "Experiment": "SRX1548041",
+            "Runs": [
+                "SRR3125962",
+                "SRR3125963",
+                "SRR3125964",
+                "SRR3125965",
+                "SRR3125966"
+            ]
+        }
+    },
+    "Source": "PMID:25738643",
+    "Study accession": "SRP068929",
+    "Study name": "Chromosome Conformation of Human Fibroblasts Grown in 3-Dimensional Spheroids",
+    "Unpaired": []
+}

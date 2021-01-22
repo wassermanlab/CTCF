@@ -1,0 +1,21 @@
+{
+    "Bioproject": "PRJNA268125",
+    "Biosample name": "HUVEC (CC-2517)",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN03203356",
+            "Experiment": "SRX765018",
+            "Runs": [
+                "SRR1658715"
+            ]
+        }
+    },
+    "Source": "PMID:25497547",
+    "Study accession": "SRP050102",
+    "Study name": "A three-dimensional map of the human genome at kilobase resolution reveals prinicples of chromatin looping",
+    "Unpaired": []
+}

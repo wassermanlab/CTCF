@@ -1,0 +1,56 @@
+{
+    "Bioproject": "PRJNA299007",
+    "Biosample name": "GM12878",
+    "Biosample sex": "female",
+    "Enzyme": "MboI",
+    "Experiment": "in situ Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN04192020",
+            "Experiment": "SRX1341876",
+            "Runs": [
+                "SRR2671227"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN04192021",
+            "Experiment": "SRX1341877",
+            "Runs": [
+                "SRR2671228"
+            ]
+        },
+        "R3": {
+            "Biosample": "SAMN04192022",
+            "Experiment": "SRX1341878",
+            "Runs": [
+                "SRR2671229"
+            ]
+        },
+        "R4": {
+            "Biosample": "SAMN04192023",
+            "Experiment": "SRX1341879",
+            "Runs": [
+                "SRR2671230"
+            ]
+        },
+        "R5": {
+            "Biosample": "SAMN04192024",
+            "Experiment": "SRX1341880",
+            "Runs": [
+                "SRR2671231"
+            ]
+        },
+        "R6": {
+            "Biosample": "SAMN04192025",
+            "Experiment": "SRX1341881",
+            "Runs": [
+                "SRR2671232"
+            ]
+        }
+    },
+    "Source": "PMID:26499245",
+    "Study accession": "SRP064914",
+    "Study name": "Chromatin extrusion explains key features of loop and domain formation in wild-type and engineered genomes",
+    "Unpaired": []
+}

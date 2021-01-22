@@ -1,0 +1,44 @@
+{
+    "Bioproject": "PRJNA287806",
+    "Biosample name": "H9 (wa09; wicell)",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN03787382",
+            "Experiment": "SRX1070630",
+            "Runs": [
+                "SRR2075604"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN03787383",
+            "Experiment": "SRX1070631",
+            "Runs": [
+                "SRR2075605"
+            ]
+        },
+        "R3": {
+            "Biosample": "SAMN03787384",
+            "Experiment": "SRX1070632",
+            "Runs": [
+                "SRR2075606",
+                "SRR2075607"
+            ]
+        },
+        "R4": {
+            "Biosample": "SAMN03787385",
+            "Experiment": "SRX1070633",
+            "Runs": [
+                "SRR2075608",
+                "SRR2075609"
+            ]
+        }
+    },
+    "Source": "PMID:26306623",
+    "Study accession": "SRP059793",
+    "Study name": "Comparison of Hi-C results using in-solution versus in-nucleus ligation",
+    "Unpaired": []
+}

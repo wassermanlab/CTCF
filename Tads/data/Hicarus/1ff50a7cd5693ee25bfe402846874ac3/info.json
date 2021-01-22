@@ -1,0 +1,36 @@
+{
+    "Bioproject": "PRJNA343608",
+    "Biosample name": "Pancreas Tissue",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN05791256",
+            "Experiment": "SRX2179255",
+            "Runs": [
+                "SRR4272014"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN05791255",
+            "Experiment": "SRX2179256",
+            "Runs": [
+                "SRR4272015",
+                "SRR4272016"
+            ]
+        },
+        "R3": {
+            "Biosample": "SAMN05791254",
+            "Experiment": "SRX2179257",
+            "Runs": [
+                "SRR4272017"
+            ]
+        }
+    },
+    "Source": "PMID:27851967",
+    "Study accession": "SRP090175",
+    "Study name": "A Compendium of Chromatin Contact Maps Reveal Spatially Active Regions in the Human Genome",
+    "Unpaired": []
+}

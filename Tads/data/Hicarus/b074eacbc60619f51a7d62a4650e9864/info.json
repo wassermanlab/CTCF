@@ -1,0 +1,32 @@
+{
+    "Bioproject": "PRJNA228983",
+    "Biosample name": "H1 Mesenchymal stem cells",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN02404682",
+            "Experiment": "SRX378275",
+            "Runs": [
+                "SRR1030739",
+                "SRR1030740",
+                "SRR1030741"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN02404676",
+            "Experiment": "SRX378276",
+            "Runs": [
+                "SRR1030742",
+                "SRR1030743",
+                "SRR1030744"
+            ]
+        }
+    },
+    "Source": "PMID:25693564",
+    "Study accession": "SRP033089",
+    "Study name": "Global Reorganization of Chromatin Architecture during Embronic Stem Cell Differentiation",
+    "Unpaired": []
+}

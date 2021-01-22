@@ -1,0 +1,28 @@
+{
+    "Bioproject": "PRJNA119555",
+    "Biosample name": "GM06990",
+    "Biosample sex": "female",
+    "Enzyme": "NcoI",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN00003927",
+            "Experiment": "SRX011612",
+            "Runs": [
+                "SRR027960"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN00003928",
+            "Experiment": "SRX011613",
+            "Runs": [
+                "SRR027961"
+            ]
+        }
+    },
+    "Source": "PMID:19815776",
+    "Study accession": "SRP001261",
+    "Study name": "Comprehensive mapping of long-range interactions reveals folding principles of the human genome.",
+    "Unpaired": []
+}

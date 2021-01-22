@@ -1,0 +1,21 @@
+{
+    "Bioproject": "PRJEB5492",
+    "Biosample name": "GM12878",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMEA2361908",
+            "Experiment": "ERX402306",
+            "Runs": [
+                "ERR436023"
+            ]
+        }
+    },
+    "Source": "PMID:25938943",
+    "Study accession": "ERP004909",
+    "Study name": "Promoter capture GM12878 CD34",
+    "Unpaired": []
+}

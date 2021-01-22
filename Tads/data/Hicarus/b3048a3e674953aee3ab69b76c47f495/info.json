@@ -1,0 +1,49 @@
+{
+    "Bioproject": "PRJNA268125",
+    "Biosample name": "GM12878",
+    "Biosample sex": "female",
+    "Enzyme": "DpnII",
+    "Experiment": "in situ Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN03203405",
+            "Experiment": "SRX764973",
+            "Runs": [
+                "SRR1658644"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN03203429",
+            "Experiment": "SRX764974",
+            "Runs": [
+                "SRR1658645"
+            ]
+        },
+        "R3": {
+            "Biosample": "SAMN03203411",
+            "Experiment": "SRX764975",
+            "Runs": [
+                "SRR1658646"
+            ]
+        },
+        "R4": {
+            "Biosample": "SAMN03203408",
+            "Experiment": "SRX764976",
+            "Runs": [
+                "SRR1658647"
+            ]
+        },
+        "R5": {
+            "Biosample": "SAMN03203437",
+            "Experiment": "SRX764977",
+            "Runs": [
+                "SRR1658648"
+            ]
+        }
+    },
+    "Source": "PMID:25497547",
+    "Study accession": "SRP050102",
+    "Study name": "A three-dimensional map of the human genome at kilobase resolution reveals prinicples of chromatin looping",
+    "Unpaired": []
+}

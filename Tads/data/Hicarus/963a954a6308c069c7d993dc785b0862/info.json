@@ -1,0 +1,28 @@
+{
+    "Bioproject": "PRJNA297887",
+    "Biosample name": "prostate",
+    "Biosample sex": "male",
+    "Enzyme": "BglII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN04147541",
+            "Experiment": "SRX1308509",
+            "Runs": [
+                "SRR2566801"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN04147542",
+            "Experiment": "SRX1308510",
+            "Runs": [
+                "SRR2566802"
+            ]
+        }
+    },
+    "Source": "PMID:27053337",
+    "Study accession": "SRP064524",
+    "Study name": "Three-dimensional disorganisation of the cancer genome occurs coincident with long range genetic and epigenetic alterations [Hi-C]",
+    "Unpaired": []
+}

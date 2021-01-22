@@ -1,0 +1,34 @@
+{
+    "Bioproject": "PRJNA210760",
+    "Biosample name": "GM12878 Lymphoblastoid cell line",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN02228119",
+            "Experiment": "SRX318776",
+            "Runs": [
+                "SRR927086",
+                "SRR927087",
+                "SRR927088",
+                "SRR927089"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN02228121",
+            "Experiment": "SRX318777",
+            "Runs": [
+                "SRR927090",
+                "SRR927091",
+                "SRR927092",
+                "SRR927093"
+            ]
+        }
+    },
+    "Source": "PMID:24185094",
+    "Study accession": "SRP026610",
+    "Study name": "Whole-genome Haplotype Reconstruction using Proximity-ligation and Shotgun Sequencing",
+    "Unpaired": []
+}

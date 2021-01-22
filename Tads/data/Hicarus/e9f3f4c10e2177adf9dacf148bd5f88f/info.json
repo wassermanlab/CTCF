@@ -1,0 +1,30 @@
+{
+    "Bioproject": "PRJNA286897",
+    "Biosample name": "KBM7",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN03771619",
+            "Experiment": "SRX1058014",
+            "Runs": [
+                "SRR2062030",
+                "SRR2062031"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN03771620",
+            "Experiment": "SRX1058015",
+            "Runs": [
+                "SRR2062032",
+                "SRR2062033"
+            ]
+        }
+    },
+    "Source": "PMID:26365489",
+    "Study accession": "SRP059447",
+    "Study name": "Genome-wide maps of nuclear lamina interactions in single human cells. (Hi-C, KBM7 haploid)",
+    "Unpaired": []
+}

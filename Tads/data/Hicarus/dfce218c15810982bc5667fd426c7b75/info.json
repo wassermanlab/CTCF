@@ -1,0 +1,67 @@
+{
+    "Bioproject": "PRJNA184350",
+    "Biosample name": "fetal lung fibroblast",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN01832310",
+            "Experiment": "SRX212172",
+            "Runs": [
+                "SRR639025",
+                "SRR639026",
+                "SRR639027",
+                "SRR639028",
+                "SRR639029"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN01832311",
+            "Experiment": "SRX212173",
+            "Runs": [
+                "SRR639030",
+                "SRR639031",
+                "SRR639032",
+                "SRR639033"
+            ]
+        },
+        "R3": {
+            "Biosample": "SAMN02191451",
+            "Experiment": "SRX294948",
+            "Runs": [
+                "SRR881990",
+                "SRR881991",
+                "SRR881992"
+            ]
+        },
+        "R4": {
+            "Biosample": "SAMN02191452",
+            "Experiment": "SRX294949",
+            "Runs": [
+                "SRR881993",
+                "SRR881994",
+                "SRR881995"
+            ]
+        },
+        "R5": {
+            "Biosample": "SAMN02191453",
+            "Experiment": "SRX294950",
+            "Runs": [
+                "SRR881996"
+            ]
+        },
+        "R6": {
+            "Biosample": "SAMN02191454",
+            "Experiment": "SRX294951",
+            "Runs": [
+                "SRR881997"
+            ]
+        }
+    },
+    "Source": "PMID:24141950",
+    "Study accession": "SRP017631",
+    "Study name": "Genome-wide Analysis of Chromatin Interactions in Human Cells",
+    "Unpaired": []
+}

@@ -1,0 +1,21 @@
+{
+    "Bioproject": "PRJNA277846",
+    "Biosample name": "MCF-7",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN03397467",
+            "Experiment": "SRX950725",
+            "Runs": [
+                "SRR1909070"
+            ]
+        }
+    },
+    "Source": "PMID:26415882",
+    "Study accession": "SRP056040",
+    "Study name": "Chromatin interaction analysis reveals changes in small chromosome and telomere clustering between epithelial and breast cancer cells",
+    "Unpaired": []
+}

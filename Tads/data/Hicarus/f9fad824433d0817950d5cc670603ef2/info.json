@@ -1,0 +1,63 @@
+{
+    "Bioproject": "PRJNA268125",
+    "Biosample name": "IMR90 (CCL-186)",
+    "Biosample sex": "female",
+    "Enzyme": "MboI",
+    "Experiment": "in situ Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN03203425",
+            "Experiment": "SRX764985",
+            "Runs": [
+                "SRR1658672"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN03203454",
+            "Experiment": "SRX764986",
+            "Runs": [
+                "SRR1658673"
+            ]
+        },
+        "R3": {
+            "Biosample": "SAMN03203421",
+            "Experiment": "SRX764987",
+            "Runs": [
+                "SRR1658674"
+            ]
+        },
+        "R4": {
+            "Biosample": "SAMN03203418",
+            "Experiment": "SRX764988",
+            "Runs": [
+                "SRR1658675"
+            ]
+        },
+        "R5": {
+            "Biosample": "SAMN03203417",
+            "Experiment": "SRX764989",
+            "Runs": [
+                "SRR1658676"
+            ]
+        },
+        "R6": {
+            "Biosample": "SAMN03203446",
+            "Experiment": "SRX764990",
+            "Runs": [
+                "SRR1658677"
+            ]
+        },
+        "R7": {
+            "Biosample": "SAMN03203415",
+            "Experiment": "SRX764991",
+            "Runs": [
+                "SRR1658678"
+            ]
+        }
+    },
+    "Source": "PMID:25497547",
+    "Study accession": "SRP050102",
+    "Study name": "A three-dimensional map of the human genome at kilobase resolution reveals prinicples of chromatin looping",
+    "Unpaired": []
+}

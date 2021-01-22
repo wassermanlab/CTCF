@@ -1,0 +1,24 @@
+{
+    "Bioproject": null,
+    "Biosample name": "GM12878",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "TCC",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN00117125",
+            "Experiment": "SRX030110",
+            "Runs": [
+                "SRR071231",
+                "SRR071232",
+                "SRR1104667",
+                "SRR1104668"
+            ]
+        }
+    },
+    "Source": "PMID:22198700",
+    "Study accession": "SRP004038",
+    "Study name": "The Spatial Organization of Human Genome",
+    "Unpaired": []
+}

@@ -1,0 +1,201 @@
+{
+    "Bioproject": "PRJNA268125",
+    "Biosample name": "GM12878",
+    "Biosample sex": "female",
+    "Enzyme": "MboI",
+    "Experiment": "in situ Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN03203268",
+            "Experiment": "SRX764938",
+            "Runs": [
+                "SRR1658572"
+            ]
+        },
+        "R10": {
+            "Biosample": "SAMN03203301",
+            "Experiment": "SRX764947",
+            "Runs": [
+                "SRR1658583"
+            ]
+        },
+        "R11": {
+            "Biosample": "SAMN03203386",
+            "Experiment": "SRX764948",
+            "Runs": [
+                "SRR1658584"
+            ]
+        },
+        "R12": {
+            "Biosample": "SAMN03203331",
+            "Experiment": "SRX764949",
+            "Runs": [
+                "SRR1658585",
+                "SRR1658586"
+            ]
+        },
+        "R13": {
+            "Biosample": "SAMN03203378",
+            "Experiment": "SRX764950",
+            "Runs": [
+                "SRR1658587"
+            ]
+        },
+        "R14": {
+            "Biosample": "SAMN03203350",
+            "Experiment": "SRX764951",
+            "Runs": [
+                "SRR1658588"
+            ]
+        },
+        "R15": {
+            "Biosample": "SAMN03203354",
+            "Experiment": "SRX764952",
+            "Runs": [
+                "SRR1658589"
+            ]
+        },
+        "R16": {
+            "Biosample": "SAMN03203376",
+            "Experiment": "SRX764953",
+            "Runs": [
+                "SRR1658590"
+            ]
+        },
+        "R17": {
+            "Biosample": "SAMN03203276",
+            "Experiment": "SRX764955",
+            "Runs": [
+                "SRR1658592"
+            ]
+        },
+        "R18": {
+            "Biosample": "SAMN03203307",
+            "Experiment": "SRX764956",
+            "Runs": [
+                "SRR1658593"
+            ]
+        },
+        "R19": {
+            "Biosample": "SAMN03203381",
+            "Experiment": "SRX764957",
+            "Runs": [
+                "SRR1658594",
+                "SRR1658595"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN03203303",
+            "Experiment": "SRX764939",
+            "Runs": [
+                "SRR1658573"
+            ]
+        },
+        "R20": {
+            "Biosample": "SAMN03203324",
+            "Experiment": "SRX764958",
+            "Runs": [
+                "SRR1658596",
+                "SRR1658597"
+            ]
+        },
+        "R21": {
+            "Biosample": "SAMN03203319",
+            "Experiment": "SRX764959",
+            "Runs": [
+                "SRR1658598"
+            ]
+        },
+        "R22": {
+            "Biosample": "SAMN03203304",
+            "Experiment": "SRX764960",
+            "Runs": [
+                "SRR1658599"
+            ]
+        },
+        "R23": {
+            "Biosample": "SAMN03203368",
+            "Experiment": "SRX764961",
+            "Runs": [
+                "SRR1658600"
+            ]
+        },
+        "R24": {
+            "Biosample": "SAMN03203290",
+            "Experiment": "SRX764962",
+            "Runs": [
+                "SRR1658601"
+            ]
+        },
+        "R25": {
+            "Biosample": "SAMN03203272",
+            "Experiment": "SRX764963",
+            "Runs": [
+                "SRR1658602"
+            ]
+        },
+        "R26": {
+            "Biosample": "SAMN03203367",
+            "Experiment": "SRX764964",
+            "Runs": [
+                "SRR1658603"
+            ]
+        },
+        "R3": {
+            "Biosample": "SAMN03203267",
+            "Experiment": "SRX764940",
+            "Runs": [
+                "SRR1658574",
+                "SRR1658575",
+                "SRR1658576"
+            ]
+        },
+        "R4": {
+            "Biosample": "SAMN03203343",
+            "Experiment": "SRX764941",
+            "Runs": [
+                "SRR1658577"
+            ]
+        },
+        "R5": {
+            "Biosample": "SAMN03203298",
+            "Experiment": "SRX764942",
+            "Runs": [
+                "SRR1658578"
+            ]
+        },
+        "R6": {
+            "Biosample": "SAMN03203277",
+            "Experiment": "SRX764943",
+            "Runs": [
+                "SRR1658579"
+            ]
+        },
+        "R7": {
+            "Biosample": "SAMN03203339",
+            "Experiment": "SRX764944",
+            "Runs": [
+                "SRR1658580"
+            ]
+        },
+        "R8": {
+            "Biosample": "SAMN03203397",
+            "Experiment": "SRX764945",
+            "Runs": [
+                "SRR1658581"
+            ]
+        },
+        "R9": {
+            "Biosample": "SAMN03203334",
+            "Experiment": "SRX764946",
+            "Runs": [
+                "SRR1658582"
+            ]
+        }
+    },
+    "Source": "PMID:25497547",
+    "Study accession": "SRP050102",
+    "Study name": "A three-dimensional map of the human genome at kilobase resolution reveals prinicples of chromatin looping",
+    "Unpaired": []
+}

@@ -1,0 +1,56 @@
+{
+    "Bioproject": "PRJNA275799",
+    "Biosample name": "fibroblast",
+    "Biosample sex": null,
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN03366377",
+            "Experiment": "SRX885913",
+            "Runs": [
+                "SRR1813900"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN03366379",
+            "Experiment": "SRX886067",
+            "Runs": [
+                "SRR1813905"
+            ]
+        },
+        "R3": {
+            "Biosample": "SAMN03366377",
+            "Experiment": "SRX1559637",
+            "Runs": [
+                "SRR1817649"
+            ]
+        },
+        "R4": {
+            "Biosample": "SAMN03366378",
+            "Experiment": "SRX885968",
+            "Runs": [
+                "SRR1817837"
+            ]
+        },
+        "R5": {
+            "Biosample": "SAMN03366378",
+            "Experiment": "SRX885971",
+            "Runs": [
+                "SRR1818285"
+            ]
+        },
+        "R6": {
+            "Biosample": "SAMN03366379",
+            "Experiment": "SRX886090",
+            "Runs": [
+                "SRR1818288"
+            ]
+        }
+    },
+    "Source": "PMID:26989773",
+    "Study accession": "SRP055421",
+    "Study name": "Senescent cell Hi-C sequencing",
+    "Unpaired": []
+}

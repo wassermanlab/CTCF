@@ -1,0 +1,23 @@
+{
+    "Bioproject": "PRJNA184350",
+    "Biosample name": "embryonic stem cells",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN01832315",
+            "Experiment": "SRX212177",
+            "Runs": [
+                "SRR639047",
+                "SRR639048",
+                "SRR639049"
+            ]
+        }
+    },
+    "Source": "PMID:24141950",
+    "Study accession": "SRP017631",
+    "Study name": "Genome-wide Analysis of Chromatin Interactions in Human Cells",
+    "Unpaired": []
+}

@@ -1,0 +1,28 @@
+{
+    "Bioproject": "PRJNA417685",
+    "Biosample name": "Whole Fetal Heart",
+    "Biosample sex": null,
+    "Enzyme": "DNaseI",
+    "Experiment": "in situ DNase Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN08000746",
+            "Experiment": "SRX3375355",
+            "Runs": [
+                "SRR6269208"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN08000745",
+            "Experiment": "SRX3375356",
+            "Runs": [
+                "SRR6269209"
+            ]
+        }
+    },
+    "Source": "PMID:30948719",
+    "Study accession": "SRP124630",
+    "Study name": "Dynamic reorganization of nuclear architecture during human cardiogenesis [HiC-seq]",
+    "Unpaired": []
+}

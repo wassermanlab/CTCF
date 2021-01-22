@@ -1,0 +1,38 @@
+{
+    "Bioproject": "PRJNA268125",
+    "Biosample name": "HUVEC (CC-2517)",
+    "Biosample sex": "male",
+    "Enzyme": "MboI",
+    "Experiment": "in situ Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN03203281",
+            "Experiment": "SRX765015",
+            "Runs": [
+                "SRR1658709",
+                "SRR1658710",
+                "SRR1658711"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN03203300",
+            "Experiment": "SRX765016",
+            "Runs": [
+                "SRR1658712"
+            ]
+        },
+        "R3": {
+            "Biosample": "SAMN03203336",
+            "Experiment": "SRX765017",
+            "Runs": [
+                "SRR1658713",
+                "SRR1658714"
+            ]
+        }
+    },
+    "Source": "PMID:25497547",
+    "Study accession": "SRP050102",
+    "Study name": "A three-dimensional map of the human genome at kilobase resolution reveals prinicples of chromatin looping",
+    "Unpaired": []
+}

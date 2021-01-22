@@ -1,0 +1,32 @@
+{
+    "Bioproject": "PRJNA290278",
+    "Biosample name": "SK-N-SH",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN03879914",
+            "Experiment": "SRX1100381",
+            "Runs": [
+                "SRR2106508",
+                "SRR2106509",
+                "SRR2106510"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN03879915",
+            "Experiment": "SRX1100382",
+            "Runs": [
+                "SRR2106511",
+                "SRR2106512",
+                "SRR2106513"
+            ]
+        }
+    },
+    "Source": "PMID:26276636",
+    "Study accession": "SRP061298",
+    "Study name": "SK-N-SH Hi-C",
+    "Unpaired": []
+}

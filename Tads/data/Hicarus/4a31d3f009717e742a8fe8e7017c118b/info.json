@@ -1,0 +1,21 @@
+{
+    "Bioproject": "PRJNA232055",
+    "Biosample name": "Breast cancer cell line T47D-MTVL",
+    "Biosample sex": "female",
+    "Enzyme": "NcoI",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN02464026",
+            "Experiment": "SRX395602",
+            "Runs": [
+                "SRR1054343"
+            ]
+        }
+    },
+    "Source": "PMID:25274727",
+    "Study accession": "SRP034599",
+    "Study name": "Distinct structural transitions of chromatin topological domains coordinate hormone-induced gene regulation",
+    "Unpaired": []
+}

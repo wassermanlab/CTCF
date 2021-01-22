@@ -1,0 +1,39 @@
+{
+    "Bioproject": "PRJNA343608",
+    "Biosample name": "Psoas Muscle Tissue",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN05791253",
+            "Experiment": "SRX2179258",
+            "Runs": [
+                "SRR4272018",
+                "SRR4272019",
+                "SRR4272020"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN05791252",
+            "Experiment": "SRX2179259",
+            "Runs": [
+                "SRR4272021",
+                "SRR4272022",
+                "SRR4272023"
+            ]
+        },
+        "R3": {
+            "Biosample": "SAMN05791251",
+            "Experiment": "SRX2179260",
+            "Runs": [
+                "SRR4272024"
+            ]
+        }
+    },
+    "Source": "PMID:27851967",
+    "Study accession": "SRP090175",
+    "Study name": "A Compendium of Chromatin Contact Maps Reveal Spatially Active Regions in the Human Genome",
+    "Unpaired": []
+}

@@ -1,0 +1,37 @@
+{
+    "Bioproject": "PRJNA480287",
+    "Biosample name": "Pancreas",
+    "Biosample sex": "female",
+    "Enzyme": "MboI",
+    "Experiment": "in situ Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN09634494",
+            "Experiment": "SRX4451231",
+            "Runs": [
+                "SRR7621282",
+                "SRR7621283",
+                "SRR7621284",
+                "SRR7621285",
+                "SRR7621286",
+                "SRR7621287",
+                "SRR7621288",
+                "SRR7621289",
+                "SRR7621290",
+                "SRR7621291",
+                "SRR7621292",
+                "SRR7621293",
+                "SRR7621294"
+            ]
+        }
+    },
+    "Source": "PMID:30650367",
+    "Study accession": "SRP154953",
+    "Study name": "EndoC-\u00dfH1 multiomic profiling defines gene regulatory programs intrinsic to human \u00df cell identity and function",
+    "Unpaired": [
+        "SRR7621282",
+        "SRR7621289",
+        "SRR7621290"
+    ]
+}

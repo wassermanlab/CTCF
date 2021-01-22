@@ -1,0 +1,28 @@
+{
+    "Bioproject": "PRJNA540591",
+    "Biosample name": "WA09 (48 hours)",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN11547132",
+            "Experiment": "SRX5773148",
+            "Runs": [
+                "SRR8994263"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN11547131",
+            "Experiment": "SRX5773149",
+            "Runs": [
+                "SRR8994264"
+            ]
+        }
+    },
+    "Source": "PMID:31231024",
+    "Study accession": "SRP194362",
+    "Study name": "Rapid Irreversible Transcriptional Reprogramming in Human Stem Cells Accompanied by Discordance between Replication Timing and Chromatin Compartment [Hi-C]",
+    "Unpaired": []
+}

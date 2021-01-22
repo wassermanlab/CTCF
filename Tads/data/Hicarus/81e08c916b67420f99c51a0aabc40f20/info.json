@@ -1,0 +1,24 @@
+{
+    "Bioproject": "PRJNA268125",
+    "Biosample name": "GM12878",
+    "Biosample sex": "female",
+    "Enzyme": "NcoI",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN03203424",
+            "Experiment": "SRX764971",
+            "Runs": [
+                "SRR1658632",
+                "SRR1658633",
+                "SRR1658634",
+                "SRR1658635"
+            ]
+        }
+    },
+    "Source": "PMID:25497547",
+    "Study accession": "SRP050102",
+    "Study name": "A three-dimensional map of the human genome at kilobase resolution reveals prinicples of chromatin looping",
+    "Unpaired": []
+}

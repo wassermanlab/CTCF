@@ -1,0 +1,24 @@
+{
+    "Bioproject": "PRJNA253910",
+    "Biosample name": "Thymus",
+    "Biosample sex": "male",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN02898030",
+            "Experiment": "SRX641264",
+            "Runs": [
+                "SRR1501134",
+                "SRR1501135",
+                "SRR1501136",
+                "SRR1501137"
+            ]
+        }
+    },
+    "Source": "PMID:25693566",
+    "Study accession": "SRP043660",
+    "Study name": "Integrative analysis of haplotype-resolved epigenomes across human tissues",
+    "Unpaired": []
+}

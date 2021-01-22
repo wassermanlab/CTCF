@@ -1,0 +1,21 @@
+{
+    "Bioproject": "PRJNA298525",
+    "Biosample name": "B-ALL",
+    "Biosample sex": null,
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN04160618",
+            "Experiment": "SRX1330144",
+            "Runs": [
+                "SRR2630712"
+            ]
+        }
+    },
+    "Source": "PMID:23536826",
+    "Study accession": "SRP064763",
+    "Study name": "The Properties of Genome Conformation and Spatial Gene Interaction and Regulation Networks of Normal and Malignant Human Cell Types",
+    "Unpaired": []
+}

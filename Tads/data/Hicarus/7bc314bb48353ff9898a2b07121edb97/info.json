@@ -1,0 +1,33 @@
+{
+    "Bioproject": "PRJNA189267",
+    "Biosample name": "HEK293T",
+    "Biosample sex": "female",
+    "Enzyme": "HindIII",
+    "Experiment": "Hi-C",
+    "Organism": "Homo sapiens",
+    "Replicates": {
+        "R1": {
+            "Biosample": "SAMN01919641",
+            "Experiment": "SRX235596",
+            "Runs": [
+                "SRR710071",
+                "SRR710072",
+                "SRR710073",
+                "SRR710074"
+            ]
+        },
+        "R2": {
+            "Biosample": "SAMN01919642",
+            "Experiment": "SRX235597",
+            "Runs": [
+                "SRR710075",
+                "SRR710076",
+                "SRR710077"
+            ]
+        }
+    },
+    "Source": "PMID:24335803",
+    "Study accession": "SRP018571",
+    "Study name": "Cohesin and CTCF Differentially Affect the Chromatin Architecture and Gene Expression in Human Cells",
+    "Unpaired": []
+}
