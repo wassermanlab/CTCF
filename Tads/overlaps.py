@@ -6,7 +6,7 @@ import sys
 
 # Initialize
 intersections = []
-tss = BedTool("Tss.bed")
+tss = BedTool("./data/UBA1.bed")
 
 # Untar and uncompress Hi-C.tgz (i.e. TADs from Hicarus, unpublished)
 hic_dir = "./data/Hicarus/"
@@ -18,7 +18,7 @@ for d in os.listdir(hic_dir):
             tads = BedTool(tads_file)
             for i in tads.intersect(tss, wa=True, wb=True):
                 intersections.append((i.fields[-1], d, i.fields[0], i.fields[1],
-                    i.fields[2], i.fields[3]))
+                    i.fields[2], i.name))
 
 # Unzip hg38.TADs.zip (i.e. TADs from the 3D Genome Browser)
 hic_dir = "./data/3dGenomeBrowser/"
@@ -29,7 +29,7 @@ for f in os.listdir(hic_dir):
         tads = BedTool(tads_file)
         for i in tads.intersect(tss, wa=True, wb=True):
             intersections.append((i.fields[-1], f, i.fields[0], i.fields[1],
-                i.fields[2], i.fields[3]))
+                i.fields[2], "."))
 
 for i in intersections:
     print("\t".join(map(str, i)))
